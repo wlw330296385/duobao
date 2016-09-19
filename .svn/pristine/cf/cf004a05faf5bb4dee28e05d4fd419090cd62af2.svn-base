@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="format-detection" content="telephone=no"/>
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>1块夺宝</title>
+		<link rel="stylesheet" type="text/css" href="http://guizu.nntzd.com/application/Api/View/Game/css/swiper.css"/>
+		<style type="text/css">
+			html,body{
+				overflow-x: hidden;
+			}
+			body,ul,h3,h4,li{
+				margin: 0;
+				padding: 0;
+			}
+			#content{padding: 20px; line-height: 24px; font-size: 14px;}
+		    h3{margin: 0;padding: 0; margin: 10px 0;  font-size: 18px;}
+		</style>
+		
+	</head>
+	<body>
+		<section id="content">
+			
+			<div class="detail">
+				如以下问题未能帮助您，请采取以下方式联系我们。<br/>
+				客服电话 : <a href="tel:17776268826" >17776268826</a><br/>
+				客服QQ : 2944310018<br/>
+				<br/>
+				1块夺宝微信公众号 : yikuaidb<br/>
+				（客服工作时间为正常工作日:上午 9:00-12:00 下午 2:30-6:00）其余时间请将问题反馈至微信公众号，我们会尽快回复您。）<br/>
+				只要一块，就克实现拥有苹果系列产品的愿望！<br />
+				<br/>
+				<h3>Q1、 怎样参加1块夺宝？</h3>
+				使用手机号码登陆，就可以参加1块夺宝了。<br/>
+				参加方式：<br />
+				A : 花费1元即可获得1个抢币，然后选择喜欢的商品即可开始夺宝；<br/>
+				B : 点击一个感兴趣的奖品，选择要参与的人次并支付，即可参与夺宝。1块夺宝，就是这么简单！<br/>
+				<br/>
+				<h3>Q2、 什么是抢币？</h3>
+				抢币是1块夺宝的平台币，用户每花费1元即可获得1个夺宝抢币；1个夺宝抢币可以直接购买1个夺宝号码。<br/>
+				抢币无法提现。<br/>
+				<h3>Q3、 1块夺宝是怎么计算幸运号码的？</h3>
+				A : 奖品的最后一个号码分配完毕后，将公示该分配时间点前本站全部奖品的最后50个参与时间；<br/>
+				B : 将这50个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362）；<br/>
+				C : 为保证公平公正公开，系统还会等待一小段时间，取最近下一期中国福利彩票“老时时彩”的开奖结果（一个五位数值B）；<br/>
+				D : （数值A+数值B）除以该奖品总需人次得到的余数 + 原始数 10000001，得到最终幸运号码，拥有该幸运号码者，直接获得该奖品。<br/>
+				注：最后一个号码认购时间距离“老时时彩”最近下一期开奖大于24小时，默认“老时时彩”开奖结果为00000；如遇福彩中心通讯故障，无法获取“老时时彩”开奖结果，最后一个号码分配时间距离故障时间大于24小时，亦默认“老时时彩”开奖结果为00000。<br/>
+				<h3>Q4、为什么要加入“老时时彩”开奖结果？</h3>
+				引入“老时时彩”开奖结果是为了保证幸运号码计算结果的绝对公平公正。<br/>
+				<h3>Q5、幸运号码的计算结果可信吗？</h3>
+				由于使用了“老时时彩”开奖结果作为参数，因此幸运号码肯定是未知的.<br/>
+				<h3>Q6、怎样查看是否中奖？</h3>
+				个人中心有您的夺宝记录，点击对应的记录，即可知道该期夺宝的获得者;<br/>
+				如果您获奖，将会有邮件、短信等方式的通知。<br/>
+				<h3>Q7、如何领奖？</h3>
+				在您获奖后会收到短信通知。<br/>
+				收到通知后，请到个人中心填写真实的收货地址，完善或确认您的个人信息，以便我们为您派发获得的奖品。<br/>
+				<h3>Q8、什么时候发货？</h3>
+				虚拟商品如:（话费,Q币等）会在3个工作日内充值，个别用户充值后没有短信，建议拨打相关咨询电话咨询如(10086、10010、10000)。需要快递托运的商品会在7个工作日内发货。（工作日是指除周末、法定节假日的工作时间，如果遇到国庆等长假期，小宝会在放假后，第一时间加班加点给大家配送商品的。） <br/>
+				<h3>Q9、我获得了商品，我还需要支付其他费用吗？</h3>
+				不需要支付其他任何费用。一般商品是不需给邮费的，如需任何费用会在商品中备注，以及说明。<br/>
+				<h3>Q10、当我获得了商品以后我该做什么？</h3>
+				当您收到中奖短信通知后，请登陆个人中心完善您的收货信息，然后等待收货即可啦！<br/>
+				<h3>Q11、1块夺宝的奖品是正品吗？怎么保证？</h3>
+				1块夺宝所有奖品均从正规渠道采购，100%正品，可享受厂家所提供的全国联保服务。<br/>
+				<h3>Q12、我收到的奖品可以换货或者退货吗？</h3>
+				非质量问题，不在三包范围内，不给予退换货；<br/>
+				请尽量亲自签收并当面拆箱验货，如果发现运输途中造成了奖品的损坏，请不要签收，可以拒签退回。<br/>
+				<h3>Q13、参与1块夺宝需要注意什么？</h3>
+				为了确保在您获奖后第一时间收到通知，请务必正确填写真实有效的联系电话和收货地址。<br/>
+				<h3>Q14、网上支付未及时到帐怎么办？</h3>
+				网上支付未及时到帐可能有以下几个原因造成：<br/>
+				第一，由于网速或者支付接口等问题，支付数据没有及时传送到支付系统造成的；<br/>
+				第二，网速过慢，数据传输超时使银行后台支付信息不能成功对接，导致银行交易成功而支付后台显示失败；<br/>
+				第三，如果使用某些防火墙软件，有时会屏蔽银行接口的弹出窗口。<br/>
+				如果支付过程问题遇到问题，请与我们联系。<br/>
+				<h3>Q15、如何晒单分享?</h3>
+				在您收到商品后，登录1块夺宝，进入"我的1块夺宝"个人中心，点击中奖纪录“晒单”发布晒单信息，通过审核后，您还可获得最多1抢币奖励。在您成功晒单后，您的晒单会出现在“晒单分享”区，与大家分享喜悦。<br/>
+			</div>
+		</section>
+		
+		<script src="http://guizu.nntzd.com/application/Api/View/Game/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTab = document.getElementById("tab");
+				var slide = oTab.getElementsByClassName("swiper-slide");
+				var swiper = new Swiper('.swiper-container',{
+					scrollbar: '.swiper-scrollbar',
+					initialSlide :1,
+					onSlideChangeEnd: function(swiper){
+						for (var i = 0; i<slide.length;i++) {
+							slide[i].style.opacity=0.5;
+						}
+				        slide[swiper.activeIndex].style.opacity=1;
+				    }
+				});
+				
+			}
+		</script>
+		<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?ec3f8b1ba759ff941e42f4cdb8701b13";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+	</body>
+</html>

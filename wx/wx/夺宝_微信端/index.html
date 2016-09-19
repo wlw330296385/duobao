@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>1块夺宝</title>
+		<link rel="stylesheet" type="text/css" href="css/rest.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css"/>
+		<style type="text/css">
+		
+			.main{overflow: hidden;}
+				.swiper-container {
+				}  
+				#banner img{ width: 100%;}
+			#lists li{ border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; text-align: center; font-size: 0.5rem; background: #fff;}
+			#lists li img{width: 100%;}
+			#lists li div.item{padding: 8px;}
+			#lists li p{height: 42px; overflow: hidden; color: #000;}
+			.probox{width: 70%; float: left;}
+			.buybtnbox{width: 30%; float:right;}
+			.progress_bg{ background: #ddd; height: 2px;}
+			.progress{height: 100%; background: red;}
+			.nowpro{ color: #999;}
+			.btn_buy{ background: red; border-radius: 3px; color: #fff; padding:3px 5px;}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper" id="banner">
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9" id="lists">
+				
+			</ul>
+		</div>
+		<script type="text/html" id="tpl_banner">
+			{{each}}
+			<div class="swiper-slide">
+				<img src="{{$value.path}}" />
+			</div>
+			{{/each}}
+		</script>
+		<script type="text/html" id="tpl_list">
+			{{each}}
+			<li class=" mui-media mui-col-xs-6" data-aid="{{$value.aid}}" data-gid="{{$value.gid}}">
+				<div class="item" >
+					<img src="{{$value.thumb}}" />
+					<p>[{{$value.section}}期]{{$value.name}}</p>
+					<div>
+						<div class="probox">
+							<div class="nowpro">
+								揭晓进度 {{$value.nowmoney / $value.money * 100 | parseInt}}%
+							</div>
+							<div class="progress_bg">
+								<div class="progress" style="width: {{$value.nowmoney / $value.money * 100}}%;">
+									
+								</div>
+							</div>
+						</div>
+						<div class="buybtnbox"><a href="javascript:;" class="btn_buy">1元抢</a></div>
+						<div class="cl"></div>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.getJSON(___site___+'?g=DuoBao',function(data){
+					if(data){
+						var html = template('tpl_list',data.recom);
+						$("#lists").html(html);
+						var html = template('tpl_banner',data.banner);
+						$("#banner").html(html);
+						var mySwiper = new Swiper ('.swiper-container', {
+						    loop: true,
+						    pagination: '.swiper-pagination'
+						})
+					}
+				})
+				
+				$("#lists").on('click','li',function(){
+					var aid = $(this).attr('data-aid');
+					var gid = $(this).attr('data-gid');
+					window.location.href = 'goods.html?aid='+aid+'&gid='+gid;
+				})
+			})
+		</script>
+	</body>
+</html>

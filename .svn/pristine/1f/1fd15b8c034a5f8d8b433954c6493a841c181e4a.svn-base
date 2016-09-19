@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>收货地址</title>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+     <script src="../js/woo.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/user/address.css" />
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<style type="text/css">
+	*{	
+		font-family: "微软雅黑" !important;
+		list-style: none;
+		padding: 0;
+		font-size: 1em !important;
+		line-height:2;
+	}
+	body{
+		background: #E3E3E3;
+	}
+	a{
+		background: #fff; 
+		border: none;color: #000; 
+		text-align: left; padding:0; 
+		width:100%;
+	}	
+</style>    
+</head>
+
+<body>
+	<div class="contain" >
+		<ul>
+			<li>
+			<a href="select.html">				
+			<label for="local">收货地址<input type="text" placeholder="收货地址" id="local"/></label>		
+			</a>
+			</li>
+			<li>
+				<label for="">详细地址<input type="text" value="" placeholder="详细地址" id="addr"/></label>
+			</li>
+			<li>
+				<label for="">电话号码<input type="number" placeholder="电话号码" id="tel"/></label>
+			</li>
+			<li>
+			<label for="">真实姓名<input type="text" placeholder="真实姓名" id="username"/></label>
+			</li>
+			<li>
+				<label for="">支&nbsp;付&nbsp;宝
+				<input type="text" placeholder="用于领取支付宝钱包(务必填写正确)" id="alipay"/>
+				</label>
+			</li>
+		</ul>
+	</div>
+	<!--弹出框-->
+		<nav class="mui-bar mui-bar-tab" style="background: red;text-align: center;">			
+	<a id="defaultTab" onclick="sbm()">
+		<div class="mui-tab-label">确定修改</div>
+	</a>
+		</nav>	
+</body>
+    <script type="text/javascript" charset="utf-8">
+      	//	验证登录
+      	var userinfo=is_login();
+      	var uid=userinfo.userid;
+      	var encrypt=userinfo.encrypt;
+      	$(function(){ 		 
+			//  这里是获取用户地址
+			$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=Member&a=getInfo&uid='+uid+'&encrypt='+encrypt,function(data){
+				if(data){
+					$('#tel').attr('placeholder',data.addresstel); 
+					$('#local').attr('placeholder',data.addressarea);
+					$('#name').attr('placeholder',data.addressname);
+					$('#addr').attr('placeholder',data.addressdetail);
+					$('#alipay').attr('placeholder',data.alipay);
+				}
+			})
+			//	更改后的地址信息     
+			var n=localStorage.getItem('s_province')	
+     		 if(n){
+     		 	var s_province=localStorage.getItem('s_province');
+     		 	var s_city=localStorage.getItem('s_city');
+     		 	var s_county=localStorage.getItem('s_county');
+     		 	var local=s_province+'-'+s_city+'-'+s_county;
+     		 	$('#local').val(local);
+     		 }
+      	})       	
+      	function sbm(){
+      		var detail=$('#addr').val()?$('#addr').val():$('#addr').attr('placeholder');
+      		var name=$('#username').val()?$('#username').val():$('#username').attr('placeholder');
+      		var tel=$('#tel').val()?$('#tel').val():$('#tel').attr('placeholder');
+      		var alipay=$('#alipay').val()?$('#alipay').val():$('#alipay').attr('placeholder');
+      		var area=$('#local').val()?$('#local').val():$('#local').attr('placeholder');
+      		$.post('http://duobao.nntzd.com/?g=DuoBao&m=Member&a=editAddress&uid='+uid+'&encrypt='+encrypt,{'detail':detail,'name':name,'tel':tel,'alipay':alipay,'area':area},function(msg){
+      			if(msg.status==1){
+      				alert('修改成功');
+      				window.location.href='user.html';
+      			}else{
+      				alert('修改失败,'+msg);
+      				return false;
+      			}
+      		},'json');
+      	}
+    </script>
+</html>

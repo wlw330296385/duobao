@@ -1,0 +1,63 @@
+
+header.mui-bar{ background: red; }
+header.mui-bar a,header.mui-bar h1{color: #fff;}
+/*----------------------任务列表开始-----------------------*/
+
+@charset "utf-8";
+/* CSS Document */
+*{ font-family:"微软雅黑","yahei"; font-size:14px; color:#4c4c4c; }
+a,p,h1,h2,h3,h4,h5,h6,ul,li,span,hr{ display:block; margin:0; padding:0; }
+p{ padding:10px; line-height:20px; }
+ul,li{ list-style-type: none;}
+h1{ font-size:28px; font-weight:normal; }
+h2{ font-size:22px; font-weight:normal; }
+h6{ font-size:28px; font-weight:normal; color: #000000;}
+h4{ font-size:16px; font-weight:normal; margin-top: 100px;}
+h5{ font-size:14px; font-weight:normal; }
+h3{ font-size:16px; font-weight:normal; }
+
+a{ text-decoration:none; }
+/*div{ width:100%; text-align:left; }*/
+input[type="submit"], input[type="reset"], input[type="button"], button { -webkit-appearance: none; }
+.floleft{ float:left;}
+.floright{ float:right; }
+.clear{ clear: both; }
+.padding60px{ padding-top: 60px;}
+.marbot60px{ margin-bottom:60px;}
+hr{ border: 1px solid #dededc; border-bottom: #fff;}
+.hr2px{ border: 2px dotted #dededc; border-bottom: none;}
+.hr3px{ border: 3px dotted #dededc; border-bottom: none;}
+mark{ color:#ff8a00; background:none;}
+/* ----------------------按钮 ----------------------*/
+/*每日任务*/
+.everydaly{width:80%;height:40px;background:#C62E2E;color:#fff;border:none;cursor:pointer; clear: both; margin: 20px auto; text-align: center; line-height: 40px; border-radius: 10px;}
+.everydaly a{width:98%;height:38px; color:#fff;border:none;text-align: center; line-height: 40px; margin: 0px auto;}
+.mui-media-objecto{padding:10px; width:80px; height:70px;
+border: 2px solid #dedede;
+-moz-border-radius: 15px; 
+-webkit-border-radius: 15px; 
+border-radius:15px; 
+}
+
+/*.mui-table-view-cello{width: auto;height:30px ;}*/
+.button{ text-align:center; margin:10px 0;}
+.buttonred,.buttongreen,.buttonyellow,.buttonblue{ width:90%; height:50px; margin:0 auto; text-align:center; border:none; color:#fff;-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius:3px; font-size:20px;}
+.buttonred{ background-color:#ba0000; }
+.buttongreen{  background-color:#57ba29;}
+.buttonyellow{ background-color:#fac32b; color:#4c4c4c;}
+.buttonblue{ background-color:#0ebafc;}
+a.btbgred,a.btbggreen{ display: block; width: 100px; height: 35px; line-height:35px; text-align: center; color: #fff; float: right; margin: 12px 10px 0 0;-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius:3px; text-indent:0 }
+a.btbgred{ background:url(../img/btbg01.png) repeat-x top left;}
+a.btbggreen{ width:80px; background:url(../img/btbg02.png) repeat-x top left; margin:0}
+.product a.btbggreen{ width: auto; margin:10px 5px 0 0; padding:0 5px;}
+.button p{ margin:0; padding:0; width:90%; margin:0 auto; text-indent:0; margin-top:10px;}
+.button p a strong{ color:#04b9fe; font-weight:normal;}
+/* ----------------------页头---------------------- */
+.top{ position:fixed; top:0; left:0; height:60px; background:url(../img/top-bg.png) repeat-x left bottom; z-index:99999; }
+	.logo{ height:40px; margin:10px 0 0 10px }
+	.topright{ width:125px; height:37px; float:right; background:url(../img/top-xmdz-box.png) right center no-repeat; margin :12px 10px 0 0; text-align:center; line-height:37px; }
+    .top h3.titleft{ text-align: left; text-indent: 10px; width: auto;}
+    .top h3{ width:53%; text-align:right; line-height:60px; float:left;}
+
+
+

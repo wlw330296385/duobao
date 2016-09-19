@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>支付</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script src="http://ipay.test.happyapk.com:9002/h5/test114/js/test.js"></script>
+		<script src="http://ipay.test.happyapk.com:9002/pub/js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+		<script type="text/javascript" src="../js/woo.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/user/pay.css" />
+	</head>
+	<body>
+		<div class="row s" style="margin-top: 10%;">
+			<div style="margin: 2% 0;">
+				<span>所需金额:</span>
+				<span style="color: red; margin-left: 10%;" id="need">111</span>
+			</div>
+		</div>
+
+		<div class="row s">
+			<div style="margin: 2% 0;">
+				<span style="width: 20%;">余额支付:</span>
+				<span style="color: red; margin-left: 9%;width: 5%;" id="money">{{}}</span>				
+			</div>
+			<input type="radio" name="pay" id="lea" style="bottom: 20%;" /></div>
+		<div class="row">
+			<div style="width: 50px;height: 50px; display: inline-block;background: url(../img/ico.gif) left -586px no-repeat;">
+			</div>
+			<div style="width:80%; display: inline-block;">
+				<div>微信支付:</div>
+				<p>推荐安装微信5.0以上版本使用</p>
+			</div>
+			<input type="radio" name="pay" id="wx" />
+		</div>
+		<div class="row">
+			<div style="width: 50px;height: 50px; display: inline-block;background: url(../img/ico.gif) left -655px no-repeat;">
+			</div>
+			<div style="width:80%; display: inline-block;">
+				<div>支付宝支付:</div>
+				<p>支持支付宝支付</p>
+			</div>
+			<input type="radio" name="pay" id="alipay" />
+		</div>
+		
+		<!--微信支付相关-->
+		<nav class="mui-bar mui-bar-tab" style="background: red;" id="nav">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="javascript:;" target="_self">
+				<div class="mui-tab-label" style="background: red; height: 50px; line-height: 50px; font-size: 1.5em;color: #fff;">确定支付</div>
+			</a>
+		</nav>
+				<script type="text/javascript" charset="utf-8">
+			var money = 1,
+				deal, aid,gid, devi = 'html5',
+				uid, encrypt,order, paytype;
+			var userinfo=is_login();
+			$(function(){
+				uid = userinfo.userid;
+				encrypt = userinfo.encrypt;				
+				// 这里获取所需金额    			
+				aid = GetQueryString('aid');
+				money = GetQueryString('money');
+				gid=GetQueryString('gid');
+				money = parseInt(money);
+				$('#need').html(money);
+				deal = money;
+				$('#money').html(userinfo.point);
+				if (userinfo.point < money || aid==null || gid==null) {
+					$('#money').parent().next().attr('disabled', 'true');
+				}
+				//    	支付相关
+				$('#nav').on('click', function() {
+						var transid = '';
+						var wx = $('#wx').attr('checked');
+						var alipay = $('#alipay').attr('checked');
+						var lea=$('#lea').attr('checked');
+						if (wx == 'checked') {
+							paytype = "403";
+							aibei();
+							return;
+						}
+						if (alipay == 'checked') {
+							paytype = "501";
+							aibei();
+							return;
+						}
+						if(lea=='checked'){
+//							这里是余额支付
+							$.post('http://duobao.nntzd.com/index.php?g=DuoBao&m=Pay&a=toPointPay&uid='+uid+'&encrypt='+encrypt,{'gid':gid,'money':money,'deal':deal,'aid':aid},function(msg){
+								if(msg){
+									alert('支付成功,您的订单号是:'+msg.oid);
+									window.location.href='MyList.html?uid='+uid;
+									return;
+								}else{
+									alert(msg);
+								}
+							},"json")
+						}else{
+							alert('请选择一种支付方式');
+							return;
+						};
+			})
+			})
+			//						这里是爱贝支付
+						function aibei(){
+						$.ajax({
+							url: 'http://duobao.nntzd.com/index.php?g=DuoBao&m=Pay&a=iAppOrder&uid='+uid+'&encrypt='+encrypt,
+							type: 'POST',
+							data: {
+								'aid': aid,
+								'deal': money,
+								'money': money,
+								'devi': 'html5'
+							},
+							async: false,
+							dataType: 'json',
+							success: function(data) {
+								if (data.transid !== undefined) {
+									transid = data.transid;
+								} else {
+									alert(data.errmsg);
+								}
+							},
+							error: function(e) {
+								alert(e);
+							}
+						});
+						var encStr = '';
+						$.ajax({
+							url: 'http://duobao.nntzd.com/index.php?g=DuoBao&m=Pay&a=getEncStr',
+							type: 'POST',
+							data: {
+								 "transid": transid,
+								"redirecturl":'http://duobao.nntzd.com/wx/user/user.html',
+								"cpurl":'http://duobao.nntzd.com/wx/user/user.html',
+								"paytype": paytype
+							},
+							async: false,
+							dataType: 'json',
+							success: function(data) {
+								if (data.encStr !== undefined) {
+									encStr = data.encStr;
+								} else {
+									alert(data.errmsg);
+								}
+							},
+							error: function(e) {
+								alert(e);
+							}
+						});	
+						window.location.href = 'https://web.iapppay.com/h5/dpay?' + encStr;
+					}
+					//    	爱贝支付结束
+		</script>
+	</body>
+</html>

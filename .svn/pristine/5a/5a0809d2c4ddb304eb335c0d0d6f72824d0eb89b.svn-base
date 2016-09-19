@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>充值狂送</title>
+	<style type="text/css">
+	html,body{margin: 0; padding: 0; background: #ffe49d;color: #440b00; }
+	.rfont{color: red}
+	.atvtime{ text-align: center; padding: 10px 0 }
+	.des{width: 90%; margin: 0 auto; line-height: 28px;}
+	</style>
+</head>
+<body>
+	<div> 
+		<img src="b1.jpg" width="100%">
+	</div>
+	<div class="atvtime rfont">
+		活动时间：4月17日、4月24日
+	</div>
+	<div>
+		<img src="b2.jpg" width="100%">
+	</div>
+	<div class="des">
+	<br/>
+		<span class="rfont"><b>活动时间：</b><br/>
+		4月17日、4月24日当天00:00：00-23:59:59</span><br/>
+
+		1.单笔充值1次，必有一次赠送抢币的机会。赠
+		  送金额在该等级内随机发送。例如，单笔充值
+		  650元，将获得1次500元档的送抢币机会；<br/>
+		2.活动期间每个账号最高可获得<span class="rfont">8880元</span>抢币；<br/>
+		3.抢币领取后永久有效；<br/>
+		4.抢币自动发至您的账号中，随时可在【<span class="rfont">账户余额</span>】中查看；<br/>
+		5.【1块夺宝】师徒系统中，徒孙充值返还金额
+		  不参与本次活动。师徒系统详见【推广ID】；<br/>
+		6.我公司有权在必要时通过在1块夺宝内发出公
+		  告等合理方式修改本次活动规则，为了保证您
+		  收到最新通知，建议你下载官方APP或绑定您
+		  的手机号。<br/><br/>
+
+	</div>
+	<div style="text-align:center; font-size: 12px">
+		桂ICP备14005353号-2<br/>
+		版权所有：天知道科技出品<br/><br/>
+	</div>
+</body>
+</html>

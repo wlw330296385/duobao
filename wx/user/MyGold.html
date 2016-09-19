@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset="utf-8"> 
+		<title>我的元宝</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="../css/user/mygold.css" />
+	<script src="../js/jquery-1.8.3.min.js"></script>
+	<script src="../js/template.js"></script>
+	<script type="text/javascript" src="js/jwweixxin-1.0.0.js" ></script>
+	<script type="text/javascript" src="../js/woo.js" ></script>
+	</head>
+	<body>
+		<ul class="">
+		
+		</ul>
+	</body>
+	<script type="text/html" id="data">
+	<li class="">
+			<div class="r">我的徒弟:</div>
+			<div class="l">{{fans}}人</div>
+		</li>
+		<li class="">
+			<div class="r">我的元宝:</div>
+			<div class="l">{{credit}}元宝</div>
+		</li>
+		<li class="">
+			<div class="r">可兑换抢币:</div>
+			<div class="l">{{credit/1000}}抢币</div>
+		</li>
+		<li class="gold">
+			<label for="gold">
+				<div class="r">兑换:</div>
+				<div class="l"><input type="number" id="gold" name="gold" autofocus="autofocus" min="1" pattern="[1-999999]" placeholder="想要兑换的抢币数量" size="0.5em"/>
+				抢币</div>
+			</label>
+		</li>
+		<li class=""><button>马上兑换</button></li>
+		</script>
+	<script>
+		
+		$(function(){	
+			var userinfo=is_login();
+			var uid=userinfo.userid,encrypt=userinfo.encrypt;
+			var htmll=template('data',userinfo);
+			$('ul').html(htmll)
+			$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=Member&a=ex_point',{'uid':uid,'encrypt':encrypt},function(data){
+				if(data){
+				}
+			})
+				$('ul li #gold').on('blur',function(){
+				var poi=$('ul li #gold').val();
+				var poi=parseInt(poi);
+					if(poi=='0'){
+						$(this).val(1)
+					}else{
+						$(this).val(poi)
+					}
+					
+				})
+				$('ul li button').on('click',function(){
+					var poi=$('ul li #gold').val();
+					$.post('http://duobao.nntzd.com/?g=DuoBao&m=Member&a=ex_point&uid='+uid+'&encrypt='+encrypt,{'point':poi},function(msg){
+						var info=$.parseJSON(msg);
+						if(info.status==1){
+							alert('充值成功');
+						}else{
+							alert(info.msg)
+					}
+			})
+		})
+		})
+
+
+		
+	</script>
+
+</html>

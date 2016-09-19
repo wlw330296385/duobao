@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no"/>
+    <title>充值抢币</title>
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+    <script src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+    <script type="text/javascript" src="../js/woo.js" ></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/user/charge.css" />
+
+</head>
+<body>
+	<div class="contain">
+		<div class="one">
+			<div>账户余额:</div>
+			<div style="color: #DD524D;">{{}}抢币</div>
+		</div>
+    <div style="clear:both"></div>
+		<div class="two">
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">10抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">20抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">30抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">50抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">100抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">200抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">300抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">500抢币</button>
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">1000抢币</button>
+		</div>
+		<div class="three">
+			<div style="width: 15%; font-size: 0.8em; text-align: right;">充值:</div>
+			<div style="width: 55%;"><input type="" name="" id="" value="1" onfocus="userDefined()" /></div>
+			<div style="widows: 18%;"><!--<button type="button" class="mui-btn mui-btn-danger">确定</button>--></div>
+		</div>
+	</div>	
+	
+	<nav class="mui-bar mui-bar-tab" id="home_nav" style="margin-bottom: 0; background: red;">			
+			<a id="" style="text-align:center">
+				<div class="mui-tab-label" style="background: red; height: 50px; line-height: 50px;font-size: 1.5em;color: #fff;">确定</div>
+			</a>
+	</nav>
+</body>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+        var num=1;
+        
+      	$(function(){
+      		var userinfo=is_login();
+//    		余额
+			$('.one div').eq(1).html(userinfo.point);
+//			选择抢币
+      		$('.two button').click(function(){    			
+      			$('.two button').addClass('mui-btn-outlined')
+      			$(this).removeClass('mui-btn-outlined')
+      			num=$(this).html();
+      			num=parseInt(num)
+      			$('input').val(num)
+      		})
+      	  })
+      	
+      	function userDefined(){
+      		$('.two button').addClass('mui-btn-outlined')
+      		$('input').blur(function(){
+      			num = $(this).val()
+      		})
+      	}  
+
+           	
+      	$('body #home_nav').on('click',function(){
+      	var point=$('input').val();
+      	window.location.href='Pay.html?money='+point;
+      	})
+    
+    </script>
+</html>

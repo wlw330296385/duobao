@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>商品详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/swiper.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../js/template.js"></script>
+		<script type="text/javascript" src="../js/help.js"></script>
+		<script type="text/javascript" src="../js/woo.js"></script>
+		<script type="text/javascript" src="../js/swiper.js"></script>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+			}
+			
+			h1 {
+				font-size: 15px;
+			}
+
+		</style>
+		<style>
+			#list_Box {
+				height: auto;
+				overflow: hidden;
+			}
+			
+			#list_Box ul li {
+				height: auto;
+				overflow: hidden;
+				background: #f6f6f6;
+				margin-bottom: 5px;
+				border-bottom: 1px dashed #e1e1e1;
+				cursor: pointer;
+			}
+			
+			#gid2,
+			#gid {
+				width: 90%;
+				margin: auto;
+				border-bottom: solid #d3d3d3 1px;
+				font-size: 20px;
+				padding: 2% 0;
+			}
+			#gid2 img,
+			#gid img {
+				width: 8%;
+				margin-right: 5%;
+			}
+			
+			#gid2 .mui-icon-arrowright,
+			#gid .mui-icon-arrowright {
+				float: right;
+			}
+			
+			#list_Box .listLeft {
+				width: 95%;
+			}
+			
+			#list_Box .listLeft:hover {
+				background: red;
+				opacity: 0.5;
+			}
+			.listLeft img {
+				float: left;
+				margin: 2% 5%;
+				width: 15%;
+			}
+			
+			.listLeft div {
+				display: block;
+				font-size: 12px;
+				margin-bottom: 1%;
+			}
+			
+			.JUxing {
+				width: 100%;
+				height: 40px;
+				background: red;
+			}
+			
+			.listLeft b {
+				color: red;
+			}			
+			#box,
+			#box2 {
+				padding: 2% 2%;
+			}			
+			.progress{
+				margin-bottom: 2%;
+			}
+			#boxx div {
+				line-height: 1;
+				padding-top: 1%;
+				display: inline-block;
+			}
+			#boxx div span{
+				padding-top: 2%;
+			}
+			
+			.bb span {
+				float: left;
+				width: 32%;
+				color: #fff;
+				line-height: 2.5;
+				text-align: center;
+			}
+			
+			.countdown {
+				width: 40%;
+				font-size: 25px !important;
+				line-height: 1.5 !important;
+				color: #fff;
+			}
+			.bottom{
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				background:#fff;
+				border: #e3e3e3 solid 2px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-------------------------------------当前商品加载开始------------------------------------------------------>
+
+		<!--	<!--	<!--
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	
+			<h1 id="title" class="mui-title" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"></h1>
+			<a class="mui-icon mui-icon-info mui-pull-right"></a>	
+		　　
+		</header>	-->
+
+		<div class="swiper-container" style="width:100%">
+			<div class="swiper-wrapper" style="width:100%">
+				<!--这里是要添加的内容-->
+			</div>
+			<!-- 如果需要分页器 -->
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<div id="box">
+
+			<script type="text/html" id="goods">
+
+				<!------------------------------状态栏开始---------------------------------->
+				<div class="listLeft">
+					<span style="width:20%;float: left;"><button type="button" class="mui-btn mui-btn-danger">{{if status==1}}进行中{{else}}已结束{{/if}}</button></span>
+					<span class="" style="width:80%;float: left;line-height: 1.2;font-size: 1.0em;padding-left:4%;">(第{{section}}期){{name}}</span>
+					<div style="clear: both;"></div>
+				</div>
+				
+				
+				<!-----------------------------这里是计时器--------------------------------->
+			{{if status==0 && b>0 && b<=18000}} 
+				<div class="JUxing" style="line-height: 3; padding: 0 2%;width: 100%;">
+				<div id="time">
+					<span class="bb">
+						<span>揭晓倒计时</span>
+						<span class="countdown"></span>
+						<span>&nbsp查看计算详情</span>
+					</span>
+					<div style="clear: both;"></div>
+				</div>
+		</div>
+		{{/if}}
+		<!------------------------------计时器结束---------------------------------->
+		<!-- ------------------------如果状态为已结束,则显示此值------------------------------------------- -->
+		{{if status==0&&b<0}}
+		<div class="listLeft">
+			<button type="button" class="mui-btn mui-btn-danger">本期揭晓</button>
+				<div>获奖者：{{nickname}}</div>
+				<div>用户IP：{{ip}}</div>
+				<div>参与：<b>{{deal}}次/人</b></div>
+				<div>揭晓时间:{{etime | time }}</div>
+		</div>
+		<div class="JUxing" style="line-height: 3; padding: 0 2%;">
+			<li style="color: #fff;">幸运号码：{{codenumber}}
+				<button type="button" class="mui-btn mui-btn-warning mui-pull-right" style="margin-top: 1%;">查看计算详情</button>
+			</li>
+		</div>
+
+		{{else if status==1}} <!-- --------------------------如果当前为进行时,则显示此值---------------------------------------------- -->
+			<div class="progress" style="height: 10px;">
+				<div class="progress-bar progress-bar-danger" id="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+					<div class="sr-only">10% 完成（危险）</div>
+				</div>
+			</div>
+
+			<h5 style="width:90%; margin:auto"><div style="float:left">总需：{{money}}次</div><div style="float:right">剩余:{{money-nowmoney}}次</div></h5>
+			<br> 
+		{{/if}}
+			</div>
+			<!-- --------------------------------------当前商品数据结束------------------------------------------------ -->
+			<!-- -------------------------本轮状态为进行时,并且结束时间小于当前时间,则显示上一期中奖数据------------------------------------------------ -->
+			{{if status==1 && nickname!=null && woo!='2'}} <div class="listLeft">
+				<button type="button" class="mui-btn mui-btn-danger">上期揭晓</button>
+				<div>总需：{{money}}</div>
+					<div>获奖者：{{nickname}}</div>
+					<div>用户IP：{{ip}}</div>
+					<div>参与：<b>{{deal}}次/人</b></div>
+					<div>揭晓时间:{{etime | time}}</div>
+				</div>
+				<div class="JUxing" style="line-height: 3; padding: 0 2%;">
+					<li style="color: #fff;">幸运号码：{{codenumber}}
+						<button type="button" class="mui-btn mui-btn-warning mui-pull-right" style="margin-top: 1%;">查看计算详情</button>
+					</li>
+				</div>
+
+				{{/if}}
+
+				</div>
+
+				<!-- ------------------------------------------上一期中奖数据结束------------------------------------------ -->
+				</script>
+				</div>
+				<!-- ---------------------------------------------参与用户列表--------------------------------------------- -->
+				<div id="list_Box">
+					<ul>
+						<li>
+							<div id="gid2">
+								<img src="../img/love.png" alt="" />晒单分享
+								<a class="mui-icon mui-icon-arrowright"></a>
+							</div>
+							<div id="gid"><img src="../img/share.png" alt="" />往期揭晓
+								<a class="mui-icon mui-icon-arrowright"></a>
+							</div>
+						</li>
+					</ul>
+					<!------------------------加载用户列表--------------------------->
+					<ul id="boxx">
+					</ul>
+					<script type="text/html" id="list">
+						{{each}}
+						<li style="border-bottom: #E3E3E3 solid 2px; margin: 0;">
+							<div class="listLeft user">
+								<img src="{{$value.userpic}}" style="border-radius: 5px;" />
+								<span>
+								<div style="color: #0EBAFC;">{{$value.nickname}}<div>({{$value.ip}})</div></div>
+								<div>参与<div style="color: red;">{{$value.deal}}</div>次&nbsp; {{$value.atime | time}}</div>
+								</span>
+							</div>
+						</li>
+						{{/each}}
+					</script>
+					<br />
+					<br />
+					<!------------------------结束加载用户列表--------------------------->
+					<nav class="bottom">
+						<div class="mui-tab-label" data-aid="" style="background: red; height: 50px; line-height: 50px; font-size: 1.5em;color: #fff;width: 100%;text-align: center;">立即购买</div>
+					</nav>
+					
+					
+					<script type="text/javascript">
+						var p = 1,woo=''
+							aid = 7545;
+						var end = 1;
+
+						function BindList() {
+							//		这里是商品信息
+							$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getactivity', {aid: aid}, function(data) {								
+								if (data) {
+									//b=为结束时间-当前时间
+									data.woo=woo;
+									var b = data.etime-data.nowtime,
+										a = '';
+										b=b*60;
+									if (b <= 18000 && b >= 0 && data.status==0){
+										setInterval(function() {
+											b--;
+											if(b==0){
+											location.reload('true');
+											}
+											a = timer(b)
+											$('.countdown').html(a)
+										}, 1000 / 60);
+									}
+									data.b = b;
+									//			这里是结束之后,不能购买
+									$('.mui-tab-label').attr('data-aid', data.aid);
+//									//          这里是结束之后,显示最新一期
+									if (b < 18000 && data.status == 0) {										
+										var str = '<div style="color:#000; width: 50%;float: left;text-align: center;line-height: 50px;">新的一期已经开始</div><div class="mui-tab-label" style="background: red; float: left;height: 50px; line-height: 50px; font-size:18px;color: #fff;width: 50%;text-align: center;">立即前往购买</div>';
+										$('.bottom').html(str)
+										$('.mui-tab-label').attr('data-gid',data.nid);
+										$('.mui-tab-label').on('click', function() {
+										var giddd = $(this).attr('data-gid');
+										window.location.href = '../goods/goods.html?aid=' + giddd+'&gid='+data.gid+'&woo=2';
+											
+										})
+									//			这里是没结束的时候,可以立即购买
+									}else{
+										$('.mui-tab-label').attr('data-aid', data.aid);
+										$('.mui-tab-label').on('click', function() {
+											var giddd = $(this).attr('data-aid');
+											window.location.href = '../user/Flow.html?aid=' + aid+'&gid='+data.gid;
+										})
+		
+									}
+									//	计算规则跳转路径
+									
+									if(data.status==1){									
+										$('#box').on('click','.JUxing',function() {
+											window.location.href ='http://duobao.nntzd.com/?g=DuoBao&m=APP&a=luckResults&aid='+data.lastid;
+											})
+									}else{
+										$('#box').on('click','.JUxing',function() {
+											window.location.href ='http://duobao.nntzd.com/?g=DuoBao&m=APP&a=luckResults&aid='+data.aid;
+										})
+									}
+									//			载入商品信息
+									$('#title').html(data.name);
+									var html = template('goods', data);
+									$("#box").html(html);
+									//轮播				
+									$('#gid').attr('data-gid', data.gid);
+									$('#gid2').attr('data-gid', data.gid);
+									var slider = new Array();
+									var num = data.slider.length;
+									
+										//	循环轮播组图
+									for (var i = 0; i < num; i++) {
+										slider[i] = data.slider[i];
+										var str = '<div class="swiper-slide""><img src="' + slider[i] + '" width="100%" height="auto"/></div>';
+										$('.swiper-wrapper').append(str);
+										var mySwiper = new Swiper('.swiper-container', {
+											//添加需要的选项:
+											effect: 'slide',
+											direction: 'horizontal',
+											loop: true,
+											autoplay: 1000,
+											speed: 1000,
+											// 如果需要分页器
+											pagination: '.swiper-pagination'
+										})
+									}
+									// 进度条JS
+									var money = parseInt(data.money)
+									var nowmoney = parseInt(data.nowmoney)
+									var valuenow = nowmoney / money * 100;
+									var vln = valuenow + '%'
+									$('.progress-bar').css('width', vln)
+										// 获取活动订单列表,输出参与用户
+										// 加载用户列表
+									$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getOrdersList', {
+										aid: aid,
+										p: p
+									}, function(list) {
+										if (list) {
+											// 调用监听事件	
+											var htmllist = template('list', list);
+											$("#boxx").html(htmllist);
+										}
+									})
+								}
+							})
+						}
+						$(function() {
+							//页面加载结束
+							// 获得URL上的aid参数
+							aid = GetQueryString('aid');
+							woo=GetQueryString('woo');
+							$("#gid").on('click', function() {
+								var gid = $(this).attr('data-gid');
+								window.location.href = 'winninglist.html?gid=' + gid;
+							})
+							$('#gid2').on('click', function() {
+								var gidd = $(this).attr('data-gid');
+								window.location.href = 'showlist.html?gid=' + gidd;
+							})
+							
+								//绑定模板
+							BindList()
+								// 开启上拉刷新	
+							$(window).scroll(function() {
+								var bot = 50; //bot是底部距离的高度
+								if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+									if (end == 1) {
+										p++;
+										$.getJSON("http://duobao.nntzd.com/?g=DuoBao&a=getOrdersList", {
+											aid: aid,
+											p: p
+										}, function(list2) {
+											if (list2) {
+												var htmllist2 = template('list', list2);
+												$('#boxx').append(htmllist2);
+											} else {
+												$('#boxx').after('<p style="margin-bottom:50px">没有更多数据了...</p>');
+												end = 2;
+											}
+										})
+									}
+								}
+							})
+						})
+					</script>
+	</body>
+
+</html>

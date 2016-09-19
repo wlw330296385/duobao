@@ -1,0 +1,159 @@
+//引入基础样式
+@import "../love/base.less";
+//引入皮肤样式
+@import "../love/skin/dark.less";
+
+header{
+    width: 100%;
+    height: 5.8rem;
+    background: url(../../images/user/my_bg.png) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    @h:3.6rem;
+    .head_img{
+        width: @h;
+        height: @h;
+        margin: 0.4rem auto 0 auto;
+        position: relative;
+        img{
+            width: @h;
+            height: @h;
+            border-radius: 50%;
+        }
+        .vip_tip{
+            width: 1rem;
+            height: 1rem;
+            position: absolute;
+            border-radius: 50%;
+            color: #fff;
+            background: @iconColor;
+            font-size: 0.4rem;
+            right: -0.5rem;
+            top: -0.2rem;
+            text-align: center;
+            line-height: 1rem;
+        }
+    }
+    .user_name{
+        text-align: center;
+        color: #fff;
+        font-size: 0.5rem;
+        line-height: 1rem;
+    }
+    .iCount{
+        color: @iconColor;
+        .bigTextFs();
+        text-align: center;
+    }
+}
+.user_Box{
+    padding: 0.3rem 0.4rem;
+    background: @appStyle;
+    overflow: hidden;
+    margin: 0.2rem 0;
+    @hi: 1.6rem;
+    h3{
+        padding-bottom: 0.3rem;
+        font-size: 0.5rem;
+        color: #fff;
+        clear: both; 
+    }
+    img{
+        width: @hi;
+        height: @hi;
+    }
+    .user_photos{
+        width: 100%;
+        .iphotos{
+           clear: both; 
+           overflow: hidden;
+        }
+        img{
+            float: left;
+            margin: 0.1rem;
+        }
+        span{
+            display: block;
+            float: left;
+            width: @hi;
+            height: @hi;
+            font-size: 1rem;
+            text-align: center;
+            line-height: @hi;
+            background: #000;
+            margin: 0.1rem;
+        }
+    }
+    .user_gift{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 0.3rem;
+        .igifts{
+           width: 100%;
+           clear: both;
+           div{
+               float: left;
+               margin: 0.1rem;
+               overflow: hidden;
+            }
+            p{
+                line-height: 0.8rem;
+                color: @nameColor;
+                text-align: center;
+                .smallTextFs()
+            }
+        }
+    }
+}
+.hrefBox{
+    background: @appStyle;
+    width: 100%;
+    padding: 0.3rem;
+    .ihref{
+        width: 100%;
+        height: 1.4rem;
+        border-bottom: 1px solid #000;
+        clear: both;
+        line-height: 1.4rem;
+        overflow: hidden;
+        span{
+            font-size: 0.5rem;
+            margin: 0.45rem 0.3rem 0 0;
+        }
+        span:nth-of-type(1){
+            float: left;
+            color: @iconColor;
+        }
+        span:nth-of-type(2){
+            float: right;
+        }
+        p{
+            float: left;
+            color: #fff;
+            font-size: 0.4rem;
+        }
+    }
+    .ihref:nth-last-of-type(1){
+        border: none;
+    }
+}
+.out{
+    margin: 0.3rem 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #fff;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    background: @appStyle;
+}
+
+
+
+
+
+
+
+
+
+

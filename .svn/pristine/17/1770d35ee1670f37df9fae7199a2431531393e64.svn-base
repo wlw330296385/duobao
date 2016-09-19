@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style type="text/css">
+    	#slider img{}
+    	h3{font-size: 14px; font-weight: 400; text-indent: 2em; line-height: 20px;}
+    	ul.mui-grid-view.mui-grid-9{ background: #fff;}
+    	.mui-table-view.mui-grid-view .mui-table-view-cell{ font-size: 12px; color: #000;}
+    	.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn){padding: 0;}
+    	ul li div{ font-weight: 400;}
+    	ul li div span.red{color: red;}
+    	ul li div progress{ 
+    		height: 3px;
+    		border: 1px solid #ddd;  
+		    background-color:#e6e6e6;
+		    color: #0064B4; /*IE10*/
+    	}
+    	ul li div span.bgred{ background: red; color: #fff; border-radius: 5px; padding: 0 8px;}
+    	.showtime{ text-align: center;}
+    	progress::-moz-progress-bar { background: #0064B4; }
+		progress::-webkit-progress-bar { background: #e6e6e6; }
+		progress::-webkit-progress-value  { background: #0064B4; }
+    	#new ul li img{ /*width: 80px; height: 80px;*/  width: 100%;}
+    	#recom ul li img{ /*width: 110px; height: 110px;*/ width: 100%;}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	var slider = mui("#slider");
+      	var myApp = angular.module('myApp',[]);
+      	myApp.controller('HomeController', function($scope,$http) {
+      		$http.get('http://duobao.nntzd.com/?g=DuoBao').success(function(data) {
+      			$scope.Banners = data.banner;
+      			$scope.New = data.new;
+      			$scope.Recom = data.recom;
+      			$.each(data.new, function(i,n) {    
+      				  var time = n.etime;
+						console.log(time);                                       
+      			});
+      		})
+      	});
+    </script>
+</head>
+<body ng-app="myApp">
+	<div id="main" ng-controller="HomeController">
+		<div id="banner">
+			<div id="slider" class="mui-slider" >
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="" ng-src="{{Banners[2].path}}">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item" ng-repeat="vo in Banners" >
+						<a href="#">
+							<img src="" ng-src="{{vo.path}}">
+						</a>
+					</div>
+					
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="" ng-src="{{Banners[0].path}}">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator" ng-class="{'mui-active':$first}" ng-repeat="vo in Banners"></div>
+				</div>
+			</div>
+		</div>
+		<div id="new">
+			<h3>
+				最新揭晓
+			</h3>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4"  ng-repeat="vo in New">
+					<a href="#">
+						<div><img src="" ng-src="{{vo.thumb}}"/></div>
+						<div>{{vo.section}}期{{vo.name}}</div>
+						<div class="showtime">
+							<span class="bgred" data-etime="{{vo.etime}}">
+								<span class="minute">0</span>:
+								<span class="second">0</span>:
+							    <span class="haomiao">0</span>
+							</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="recom">
+			<h3>
+				人气推荐
+			</h3>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6"  ng-repeat="vo in Recom">
+					<a href="#">
+						<div><img src="" ng-src="{{vo.thumb}}"/></div>
+						<div>{{vo.name}}</div>
+						<div class="">
+							<p>当前进度：<span class="red">{{vo.nowmoney / vo.money * 100 | number:0}}%</span></p>
+							<p><progress value="{{vo.nowmoney / vo.money * 100 | number:0}}" max="100" ></progress></p>							
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" href="#tabbar">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">夺宝</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-chat">
+			<span class="mui-icon mui-icon-refresh"></span>
+			<span class="mui-tab-label">最新揭晓</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact">
+			<span class="mui-icon mui-icon-chat"></span>
+			<span class="mui-tab-label">晒单</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact">
+			<span class="mui-icon mui-icon-star"></span>
+			<span class="mui-tab-label">购物车</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-map">
+			<span class="mui-icon mui-icon-contact"><span class="mui-badge">3</span></span>
+			<span class="mui-tab-label">个人中心</span>
+		</a>
+	</nav>-->
+	<div style="position:fixed; bottom: 0; left: 0; width: 100%; text-align: center; padding: 10px 0; background: rgba(255,255,255,0.8);">
+		<a href="dowload.html" style="display: block; width: 80%; margin: 0 auto; padding: 10px 8px; background: #DD524D; color: #fff; border-bottom: 2px solid #CF2D28;">免费下载 立即开抢</a>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.bgred').each(function(i,n){
+				alert(n)
+			})
+//			countDown();
+		})
+		/* 质朴长存法  by lifesinger */
+		function pad(num, n) {
+		
+		    var len = num.toString().length;
+		
+		    while(len < n) {
+		        num = "0" + num;
+		        len++;
+		    }
+		    return num;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>1块夺宝</title>
+		<link rel="stylesheet" type="text/css" href="css/rest.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<style type="text/css">
+			/*.status_box{display: none;}*/
+			.padd{padding: 10px;}
+			.tbg{ background: #f1f1f1;padding: 10px 0; text-indent: 10px;}
+			.swiper-wrapper img{ width: 100%;}
+			#goods_info{padding:10px ;}
+			#goods_info h1{ font-weight: 400; font-size: 1rem; text-align: center;}
+			.progress_bg{ background: #ddd; height: 2px; margin-bottom: 10px;}
+			.progress{height: 100%; background: red;}
+			#nowpro{}
+			#pay_order{ position: fixed; bottom: 0; width: 100%; padding: 10px 0; background: rgba(255,255,255,0.8); text-align: center;}
+			#pay_order a{ color: #fff; background: #f35252; border-bottom: 2px solid #d71f1f; padding: 5px 10px; width: 80%; display: block; margin: 0 auto;}
+			#orderbox { background: rgba(0,0,0,0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9; display: none;}
+			.order_bottom{ position:absolute;z-index: 100; bottom: 0; left: 0; width: 100%; background: #fff;}
+			.btn_pay{ margin: 10px 0 20px 0; text-align: center;}
+			.btn_red{ background:#d71f1f; color: #fff; border-radius: 5px; padding: 10px 15px; width: 70%; display: block;  margin:0 auto;font-size: 14px;}
+			.userpic{ vertical-align: top;}
+			.userpic img{ border-radius: 50%; width: 80%;}
+			.luckcode{ background:#f35252 ; color: #fff; padding: 3px 0;text-indent: 10px;}
+			.tit{ margin: 10px 0;}
+			.tit div{ background: #f35252; padding:5px 10px; color: #fff; border-radius: 5px;}
+			#pay_lists li{border-bottom: 1px solid #ddd; padding: 8px 0;}
+			#pay_lists img{ width: 70%; margin:5px auto 0 auto;  border-radius: 50%;}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div id="content">
+				
+			</div>
+			<script type="text/html" id="tpl">
+				<div class="swiper-container">
+				    <div class="swiper-wrapper">
+				    	{{each slider as b}}
+						<div class="swiper-slide">
+							<img src="{{b}}" />
+						</div>
+						{{/each}}
+				    </div>
+				    <div class="swiper-pagination"></div>
+				</div>
+				
+				<div id="goods_info">
+					
+					<h1>{{name}}</h1>
+				</div>
+				
+				
+				<div id="nowpro" class="status_box">
+					<div class="padd">
+						<p>第 {{section}} 期</p>
+						<div class="progress_bg">
+							<div class="progress" style="width: {{nowmoney / money * 100}}%;">
+								
+							</div>
+						</div>
+						<p>
+							<div>总需：{{money}}人次</div>
+							<div style="float: right;">剩余：{{money-nowmoney}}</div>
+						</p>
+					</div>
+				</div>
+				
+				
+				<div id="luckman" class="status_box mui-table-view">
+					<div class="padd">
+						<div class="tit">
+							<div>上期揭晓</div>
+						</div>
+						<div class="mui-col mui-col-xs-2 userpic">
+							<img src="{{userpic}}"/>
+						</div>
+						<div class="mui-col mui-col-xs-10">
+							<div>获得者：{{nickname}}</div>
+							<div>用户IP：{{ip}}</div>
+							<div>本期参与：<div style="color: red;">{{deal}}</div> 人次</div>
+							<div>揭晓时间：{{etime}}</div>
+						</div>
+					</div>
+					<div class="luckcode">
+						幸运号码：{{codenumber}}
+					</div>
+				</div>
+				
+				<div id="timer" class="status_box">
+					倒计时
+				</div>
+				
+				<div id="nowluck" class="status_box">
+					本期揭晓
+				</div>
+				
+				<div id="btngroup">
+					<ul>
+						<li>晒单分享</li>
+						<li>往期揭晓</li>
+						<li>图文详情</li>
+					</ul>
+				</div>
+			</script>
+			
+			
+			
+			
+			<div class="hr">
+				
+			</div>
+			<div id="pay_lists">
+				
+			</div>
+			<script type="text/html" id="tpl_order_list">
+				<ul>
+				{{each}}
+					<li>
+						<div class="mui-col mui-col-xs-2" style="text-align: center;">
+							<img src="{{userpic}}"/>
+						</div>
+						<div class="mui-col mui-col-xs-10">
+							<p><div style="color: #0EBAFC;">{{nickname}}</div> (192.168.1.1)</p>
+							<p>参与了<div style="color: red;">3</div>次  2016-04-01 16:24:57</p>
+						</div>
+					</li>
+				{{/each}}
+				</ul>
+			</script>
+			<div id="orderbox">
+				<div class="order_bottom">
+					<div class="tbg">人次期数选择</div>
+					<div class="padd">
+						<p class="mui-content-padded">参与人次</p>
+						<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+							<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+							<input id="test" class="mui-input-numbox" type="number" value="10" />
+							<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+						</div>
+						
+					</div>
+					<div class="btn_pay">
+						<a href="javascript:;" class="btn_red">开始夺宝</a>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div id="pay_order" style="display: none;">
+			<a href="javascript:;" id="btn_buy">立即购买</a>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+		
+			var aid = app.GET('aid');
+			
+			function getOrder(){
+				$.getJSON(___site___+'?g=DuoBao&a=getOrdersList', {
+					aid: aid,
+					p: 1
+				}, function(data) {
+					if (data) {
+						var html = template('tpl_order_list',data);
+						$("#pay_lists").html(html);
+					}
+				})
+			}
+			
+			
+			$(function(){
+				
+				$.getJSON(___site___+'?g=DuoBao&a=getactivity',{aid:aid},function(data){
+					if(data){
+						console.log(data);
+//						var html = template('tpl_list',data.recom);
+//						$("#lists").html(html);
+						var html = template('tpl',data);
+						$("#content").html(html);
+						var mySwiper = new Swiper ('.swiper-container', {
+						    loop: true,
+						    pagination: '.swiper-pagination'
+						})
+					}
+				})
+				getOrder();
+				$("#orderbox").on('click',function(){
+					$(this).hide();
+				})
+				$(".order_bottom").on('click',function(){
+					return false;
+				})
+//				
+//				$("#lists").on('click','li',function(){
+//					var aid = $(this).attr('data-aid');
+//					var gid = $(this).attr('data-gid');
+//					window.location.href = 'goods.html?aid='+aid+'&gid='+gid;
+//				})
+			})
+		</script>
+	</body>
+</html>

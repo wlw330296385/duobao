@@ -1,0 +1,58 @@
+﻿/*@media only screen and (max-width: 359px){html{font-size:14px;} .meng2_all{bottom:1%;}}
+@media only screen and (min-width: 360px){html{font-size:16px;} .meng2_all{bottom:2.5%;}}
+@media only screen and (min-height: 568px){html{font-size:16px;} .meng2_all{bottom:2.5%;}}
+*/
+@media only screen and (max-width: 359px){html{font-size:14px;} .meng2_all{bottom:1%;} .content{margin-left:5%;}}
+@media only screen and (min-width: 360px){html{font-size:16px;} .meng2_all{bottom:2.5%;} .content{margin-left:5%;}}
+@media only screen and (min-width: 720px){.content{margin-left:0;} }
+@media only screen and (min-height: 568px){html{font-size:16px;} .meng2_all{bottom:2.5%;}}
+a{color:#ee702b;}
+ul,li,h1,h2,h3,h4,h5,h6,b,i{margin:0; padding:0; list-style:none; font-style:normal; font-weight:normal;}
+body{margin:0; padding:0; background:url(../images/bg.jpg); max-width:720px; margin:0 auto;}
+.lucky{width:100%; height:1.8rem; background:#2e1415; color:#f9694e; font-size:0.85rem;}
+.lucky img{position:absolute; top:2%; left:3%;}
+.news{width:15rem; margin:0 auto; overflow:hidden; /*border:1px solid blue;*/}
+.tip{width:600rem; height:1.8rem; line-height:1.8rem; margin:0 auto; /*border:1px solid pink;*/}
+.tip li{/*width:15rem;*/ /*border:1px solid green; */float:left; text-align:center;}
+.header_t{width:100%; position:relative;}
+.rule_down{position:absolute; top:0; right:2%; cursor:pointer;}
+.top_all{color:#ee702b; width:100%; margin-top:-7%; /*position:absolute; top:31%;*/}
+.top_l{float:left; margin-left:0.5rem; cursor:pointer; position:relative;}
+.top_r{float:right; position:relative; margin-right:1.3rem; cursor:pointer;}
+.game_num{color:#fff;}
+.arr{position:absolute; top:50%; right:-0.8rem; margin-top:-4.5px;}
+.turntable{width:95%; margin:5% auto 0; position:relative; overflow:hidden;/* border:1px solid green;*/ overflow:hidden;}
+.rotate{position:absolute; margin-left:7.5%; margin-top:5%;transform:rotate(4deg); -ms-transform:rotate(4deg); -moz-transform:rotate(4deg); -webkit-transform:rotate(4deg); -o-transform:rotate(4deg);}
+.btn{position:absolute; top:38%; left:40%; z-index:2; cursor:pointer;}
+.content{width:90%; margin-left:5%; font-weight:bold; position:fixed; bottom:3%;}
+.content span{float:left; width:46%; border:2px solid #ffe88a; border-radius:5px; text-align:center; padding:0.6rem 0; color:#ffe88a; cursor:pointer;}
+.content span.current{background:#ffe88a; color:#550404;}
+.content .share{float:right;}
+/*蒙版*/
+.meng{position:absolute; top:0; width:100%; height:100%; background:rgba(19,18,18,0.84); display:none; z-index:3;}  
+.rule_all{width:100%; color:#fff; }
+.rule{width:96%; background:url(../images/rule_bg.jpg); padding:2%;}
+.rule h1{text-align:center; font-size:1.2rem;}
+.rule li{ margin: 8px 0 }
+.rule .tb{font-weight:bold; margin-top:1rem;}
+.rule_up{position:absolute; right:2%; cursor:pointer;}
+.meng1{display:none;}
+.meng00{display:block; margin:50% auto auto;}
+.meng_t{position:relative;width:100%; bottom:2%; max-width:720px; margin:0 auto}
+.next{position:absolute; top:71%; left:29%; width:41%; height:30%;/* border:1px solid green;*/ cursor:pointer;}
+.meng2{display:none;}
+.meng2_all{position:absolute; }
+.next2{top:0%; left:13%; width:39%; height:20%; }
+.meng3{display:none;}
+.next3{top:68%; left:15%; width:45%; height:27%; }
+.meng2_share{float:right; margin-right:5%;}
+@media only screen and (max-height: 560px){.turntable{width:90%; margin:1% auto 0;} .content{bottom:1%;}}
+@media only screen and (max-height: 480px){.turntable{width:70%;}}
+.meng4{display:none;}
+.popup{position:fixed; width:98%; margin-top:15%; margin-left:1%; height:auto; /*background:#f6eed7;*/ color:#fff; text-align:center; border-radius:5px; max-width:720px; padding-bottom:10%;}
+.popup_in{width:96%; position:relative; padding:10% 0 8%;}
+.popup h2{position:absolute; top:52%; left:20%; font-size:1.0rem; color:#673a13; width:60%; color:#eb4141;}
+.sure{width:50%; position:absolute; bottom:15%; margin-left:25%; display:block; background:#eb4141; text-align:center; padding:0.4rem 0; border-radius:3px; font-size:1.1rem; color:#fff942; worder-spacing:10px; letter-spacing:2px;}
+.shop_name{color:#eb4141;}
+.close{position:absolute; top:28%; right:10%; z-index:3;}
+.pop_top{margin-left:1%;

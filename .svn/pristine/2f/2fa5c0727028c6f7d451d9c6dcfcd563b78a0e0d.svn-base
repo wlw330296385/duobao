@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>公告</title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jwweixxin-1.0.0.js" ></script>
+		<script type="text/javascript" src="js/template.js"></script>
+		<script type="text/javascript" src="js/help.js"></script>
+		<script type="text/javascript" src="js/woo.js"></script>
+	</head>
+	<style>
+	b{
+		text-align: center;
+		font-size: 2em
+	}
+	</style>
+<body>
+	<header></header>
+	<div style="width:80%;margin:auto;text-align: center;padding-top:5%" id="aaa">
+		
+	</div>
+	<footer></footer>
+	<script type="text/html" id="list">
+	<b>{$title}</b>
+		<p>{$atime | time}</p>
+		<img src="{$icon}" alt="" width="60%">
+		<div>{$content}</div>
+		</script>
+</body>
+<script>
+var id=GetQueryString('id');
+$(function(){
+	$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=Homeann&a=announce_detail',{'id':id},function(msg){
+		if (msg) {
+			var htmlll=template('list',msg);
+				$('body div#aaa').html(htmlll);
+		};
+	})
+})	
+</script>
+</html>

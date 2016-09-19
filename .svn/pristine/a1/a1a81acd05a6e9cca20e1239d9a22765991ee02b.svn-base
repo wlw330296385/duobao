@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>疯狂大转盘</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <img src="images/header.jpg" width="100%">
+      <div class="turntable-bg">
+        <div class="turntable">
+          <div class="pointer"><img src="images/pointer1.png" width="100%" alt="pointer"/></div>
+          <div class="rotate" ><img id="rotate" src="images/turntable1.png" width="100%" alt="turntable"/></div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="title"><img src="images/title.png" width="200" > <a class="btn-rule">活动规则</a></div>
+      <div class="awards-name">
+        <div class="scrolldiv">
+        <ul class="clearfloat">
+
+
+<li>中**吧抽中<span>1元买iPad</span></li>
+<li>轮**哥抽中<span>1元买iPhone</span></li>
+<li>陈**周抽中<span>1元买iWatch</span></li>
+<li>13**58抽中<span>1元买iPad</span></li>
+<li>一**你抽中<span>1元买iWatch</span></li>
+<li>hc**46抽中<span>1元买iPhone</span></li>
+<li>好**来抽中<span>1元买iPhone</span></li>
+<li>没**6s抽中<span>1元买iWatch</span></li>
+<li>阿**滴抽中<span>1元买iPad</span></li>
+<li>中**帝抽中<span>1元买iPhone</span></li>
+<li>15**73抽中<span>1元买iPad</span></li>
+<li>必**奖抽中<span>1元买iPhone</span></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      桂ICP备14005353号-2  <br/>版权所有：南宁天知道科技
+    </div>
+  </div>
+  <!--悬浮透明层-->
+  <div class="layer">
+  </div>
+  <!--活动规则-->
+  <div class="rule">
+    <div class="rule-box">
+      <div class="close-rule close"><img src="images/close.png" width="18"></div>
+      <div class="rule-title">活动规则</div>
+      <div class="rule-nav">
+        <div>活动时间</div>
+        <p class="mb20">即日起生效，具体结束时间待官方公布。</p>
+        <div>活动细则</div>
+        <p>1.必须安装“1块夺宝”才能使用。</p>
+        <p>2.必须注册“1块夺宝”才能领取一元。</p>
+        <P class="mb20">3.转盘抽到的奖品是购买机会，并非100%获得。</P>
+        <div>声明：本活动最终解释权归南宁天知道科技所有。</div>
+      </div>
+    </div>
+  </div>
+  <!--中奖提示-->
+  <div class="awards-tip">
+    <div class="awards-tip-box">
+      <div class="close-awards-tip close"><img src="images/close.png" width="18"></div>
+      <div class="awards-tip-title">中奖提示</div>
+      <div class="awards-tip-nav">
+        <p>
+          恭喜您获得“<span class="fcred" id="awards">1元买iPhone6</span>”的机会，请登录<a id="download_link">1块夺宝APP</a>查看详情。
+        </p>
+        <a class="btn-red" id="download" href="javascript:;">立即登录1块夺宝</a>
+      </div>
+    </div>
+  </div>
+  <div id="v" data-value="v5A" style="display:none"></div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/utils.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/channel.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript">
+$(function (){
+  var channel_id = getChannelId();
+  var v = $('#v').attr('data-value');
+  $('#download_link').click(function() {
+    download();
+  });
+
+	var rotateTimeOut = function (){
+		$('#rotate').rotate({
+			angle:0,
+			animateTo:2160,
+			duration:8000,
+			callback:function (){
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+	};
+	var bRotate = false;
+	var rotateFn = function (awards, angles, txt){
+		bRotate = !bRotate;
+		$('#rotate').stopRotate();
+		$('#rotate').rotate({
+			angle:0,
+			animateTo:angles+1800,
+			duration:3000,
+			callback:function (){
+				//alert(txt);
+				$('#awards').text(txt);
+				$('.layer ,.awards-tip').show();
+				bRotate = !bRotate;
+			}
+		})
+	};
+	$('.pointer').click(function (){
+		if(bRotate)return;
+    trackEvent(v, channel_id, '点击抽奖');
+		var item = rnd(0,2);
+		switch (item) {
+			case 0:
+				rotateFn(0, 0, '1元买iWatch');
+				break;
+			case 1:
+				rotateFn(1, 120, '1元买iPad Pro');
+				break;
+			case 2:
+				rotateFn(2, 240, '1元买iPhone6s');
+				break;
+		}
+		console.log(item);
+	});
+  $('.btn-rule').click(function(){
+    trackEvent(v, channel_id, '活动规则');
+		$('.layer ,.rule').show();
+	});
+	$('.close-rule').click(function(){
+		$('.layer ,.rule').hide();
+	});	
+	$('.close-awards-tip').click(function(){
+		$('.layer ,.awards-tip').hide();
+	});	
+});
+function rnd(n, m){
+	return Math.floor(Math.random()*(m-n+1)+n)
+}
+//信息向上滚动
+function AutoScroll(obj){
+	$('.scrolldiv').find("ul:first").animate({
+	  marginTop:"-26px"
+	},300,function(){
+	  $(this).css({marginTop:"0px"}).delay(500).find("li:first,li:nth-child(2)").appendTo(this);
+	});
+  }
+$(document).ready(function(){
+  //创建奖品数组
+  var awards = ['1元买iWatch','1元买iPad Pro','1元买iPhone6s'];
+  $.getJSON('data.json',function(data){
+	  var name_arry = data.name;
+	  $.each(name_arry,function(index,name){
+		  //console.log(name);
+      if (name.length > 3) {
+        name = name.substr(0, 4);
+        name = name.substr(0, 1) + '**' + name.substr(-1, 1);
+      }
+		  $('.scrolldiv').find("ul:first").append('<li>'+name+' 抽中 <span class="fcred">'+awards[Math.floor(Math.random()*3)]+'</span></li>')
+	  })
+  });
+  setInterval('AutoScroll(".scrolldiv")',2000);
+});
+
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1ae2bf3e81df474afe7b96df997e2bf0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</html>

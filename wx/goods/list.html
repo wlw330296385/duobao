@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"> 
+		<title>用户晒单</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/mui.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<script type="text/javascript" src="../js/template.js" ></script>
+<script type="text/javascript" src="../js/help.js" ></script>
+<script type="text/javascript" src="../js/woo.js" ></script>
+<script type="text/javascript">
+var p=1;
+var end=1;
+	function BindList(){
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getshowslist',{p:p},function(data){
+			if(data){
+//				console.log(data)
+				 for (var i = 0; i < data.length; i++) {
+					
+								var photos = data[i].photos;
+								var photoarr = photos.split('|');
+									data[i].photos = photoarr;
+							}
+				var html = template('tpl_list',data);
+				$("#list_Box").html(html);
+			}
+		})
+	}
+	
+	 
+		$(function(){
+		//页面加载结束
+		//绑定模板
+		 BindList()
+		 // 开启上拉刷新
+		
+		// 获得URL上的aid参数
+		
+			$(window).scroll(function () {		        
+		        var bot = 50; //bot是底部距离的高度
+        		if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+        		if(end=1){	
+		            p++;
+		            $.getJSON("http://duobao.nntzd.com/?g=DuoBao&a=getshowslist", {p:p}, function (list2) {
+		                if(list2){		                   
+		                     for (var i = 0; i < list2.length; i++) {					
+								var photos = list2[i].photos;
+								var photoarr = photos.split('|');
+									list2[i].photos = photoarr;
+							}
+		                    var htmlsss = template('tpl_list',list2);
+								$("#list_Box").append(htmlsss);
+		                    
+		                }else{
+		                	
+		                	 $('#list_box').after('<p>没有更多数据了...</p>');
+		                	end=2;
+		                }
+		              })
+		        }
+		    }
+		})
+	})
+</script>
+<style>
+.l{
+	width:30%;
+	float: left;
+	text-align: center;
+	vertical-align:middle;
+	font-size: 12px;
+	line-height: 1.2;
+}
+.l img{
+	border-radius: 8%;
+	width: 70%;
+}
+div{
+	padding: 0 5%;
+}
+li{
+	
+	margin-top: 5%;
+	border-bottom: dashed 2px #d3d3d3;
+}
+.r{
+	text-align: left;
+	width: 38%;
+	padding: 0;
+	margin-left: 2%;
+	line-height: 1.5;
+}
+.mui-active div{
+	color: red;
+	padding: 0;
+}
+</style>
+</head>
+
+	<body>
+
+<ul id="list_Box">
+<!--这里是商品数据-->
+</ul>
+	<script id="tpl_list" type="text/html">
+ 		{{each}}
+		<li><a href="goods.html?aid={{$value.aid}}">
+		<div class="l">
+			<img src="{{$value.userpic}}">		
+		</div>
+		<div class="l r mui-ellipsis">
+			<b class="mui-ellipsis">{{$value.nickname}}</b>
+			<div class="mui-ellipsis">第{{$value.section}}期{{$value.name}}</div>
+		</div>
+		<div class="l">
+	  	 {{$value.atime | time}}
+	    </div>
+	    <div style="clear: both;"></div>
+		<div>
+			<p>{{if $value.des}}{{$value.des}}{{else}}这里是系统好评:棒棒哒!!开心(｡･∀･)ﾉﾞ{{/if}}</p>
+			{{each $value.photos as p i}}
+			<img width="23%"  src="{{$value.photos[i]}}">
+			{{/each}}
+		</div>
+		</a>
+		</li>			
+		{{/each}}
+	</script>
+
+		<nav class="mui-bar mui-bar-tab" id="home_nav">
+			<a id="defaultTab" class="mui-tab-item" href="../index.html">
+				<div class="mui-icon mui-icon-home"></div>
+				<div class="mui-tab-label">1块夺宝</div>
+			</a>
+			<a  id="quyueTab" class="mui-tab-item" href="showlist.html">
+				<div class="mui-icon mui-icon-chatboxes"></div>
+				<div class="mui-tab-label">最新揭晓</div>
+			</a>
+			<a id="rankTab" class="mui-tab-item mui-active" href="list.html">
+				<div class="mui-icon mui-icon-camera"></div>
+				<div class="mui-tab-label">晒单</div>
+			</a>
+			<a id="myTab" class="mui-tab-item" href="../user/user.html">
+				<div class="mui-icon mui-icon-contact"></div>
+				<div class="mui-tab-label">我的</div>
+			</a>
+		</nav>
+
+	</body>
+
+</html>

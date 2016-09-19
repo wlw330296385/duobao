@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<title>中奖纪录</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/mui.min.css">
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/template.js" ></script>
+<script type="text/javascript" src="../js/help.js" ></script>
+<script type="text/javascript" src="../js/woo.js" ></script>
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<script type="text/javascript">
+var p=1;
+var end=1;
+var uid = 888;
+	function BindList(){
+
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=member&a=getwinninglist',{uid:uid,p:1},function(data){
+			if(data){
+				var html = template('tpl_list',data);
+				$("#list_Box").html(html);
+			}
+		})
+	}
+//	验证登录
+var userinfo=is_login(); 
+	$(function(){
+		//页面加载结束
+		// 获得URL上的aid参数
+		uid = GetQueryString('uid')		
+		//绑定模板		
+		BindList()					
+		// 开启上拉刷新
+		
+			$(window).scroll(function () {		        
+		        var bot = 50; //bot是底部距离的高度
+        		if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+        			if(end=1){
+		            	p++;
+		           		$.getJSON("http://duobao.nntzd.com/?g=DuoBao&m=member&a=getwinninglist",{uid:uid,p:2},function (list2) {
+			                if(list2){
+			                   
+			                    var htmllist2= template('tpl_list',list2);		                  
+			                    $('#list_box').append(htmllist2);		                    
+			                }else{		                	
+			                	 $('#list_box').after('<p>没有更多数据了...</p>');
+			                	end=2;
+			                }
+		              })
+		        }		    
+		}
+		})
+	})
+</script>
+<style>
+	#list_Box { height: auto; overflow: hidden; }
+	#list_Box ul { }
+	#list_Box ul li {height:auto; overflow: hidden; background:#f6f6f6; margin-bottom: 5px; border-bottom: 1px dashed #e1e1e1;}
+	#list_Box .listLeft { float: left; width: 85%;}
+	.listLeft  img { float: left; margin: 15px 25px;}
+	
+	.listLeft  h5 { color: #060606; font-size: 20px; margin-bottom: 15px;}
+	
+	.listLeft div { display: block; font-size: 16px;margin-bottom:1%;}
+	
+	.listLeft b { color: deepskyblue;}
+	
+	#list_Box .listRight { float: right; width: 15%; margin-top: 25px;}
+
+			#user img{ height: 28px; width: 28px; margin-top: 6px;}
+			#home_nav{background: #f9f9f9;}
+			#home_nav a{color: #5f5756;}
+			
+			#home_nav div{color: #5f5756;}
+			
+			#home_nav .mui-active div{ color: #e74b3e;}
+			header{
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<br /><br />
+<ul id="list_Box">
+	<!--这里是内容-->
+	</ul>
+	<script id="tpl_list" type="text/html">
+    {{each}}
+    
+    <li>
+			<div class="listLeft" style="border: solid 1px #E3E3E3; width: 100%;">
+				<img src="{{$value.thumb}}" width="30%"/>
+					<div style="margin-top: 3%;">
+					<bb style="color: black; font-size: 1.2em;">(第{{$value.section}}期){{$value.name}}</bb>
+					<div>本期参与：<b style="color: red;">{{$value.deal}}人/次</b></div>
+					<div>本期揭晓:{{$value.etime | time}}</div>
+					<div style="font-size: 2em;color:deepskyblue; font-weight: bold;letter-spacing: 8px;">
+						<b>{{if $value.stutus==0}}未发货{{else if $value.status==1}}已发货{{else}}收到货{{/if}}</b>
+						<b>{{if $value.isshow==1}}已晒单{{else}}未晒单{{/if}}</b></div>
+			</div>
+			</div>
+		</li>
+    
+    {{/each}}	
+	</script>
+
+<nav class="mui-bar mui-bar-tab" id="home_nav">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="../index.html">
+				<div class="mui-icon mui-icon-home"></div>
+				<div class="mui-tab-label">1块夺宝</div>
+			</a>
+			<a  id="quyueTab" class="mui-tab-item" href="../goods/showlist.html">
+				<div class="mui-icon mui-icon-chatboxes"></div>
+				<div class="mui-tab-label">最新揭晓</div>
+			</a>
+			<a id="rankTab" class="mui-tab-item" href="../goods/list.html">
+				<div class="mui-icon mui-icon-camera"></div>
+				<div class="mui-tab-label">晒单</div>
+			</a>
+
+			<a id="myTab" class="mui-tab-item" href="user.html">
+				<div class="mui-icon mui-icon-contact"></div>
+				<div class="mui-tab-label">我的</div>
+			</a>
+		</nav>
+
+		</script>
+	</body>
+
+</html>

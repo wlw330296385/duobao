@@ -1,0 +1,101 @@
+html {
+  overflow-x: hidden;
+}
+body,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+img {
+  display: block;
+}
+i {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+body {
+  background: #000000;
+ 
+}
+body {
+  background: url(../../images/user/login_bg.jpg) no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+.logo {
+  width: 2.653rem;
+  margin: 28% auto 0 auto;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, 0 40%, 0 100%, from(transparent), color-stop(0, transparent), to(rgba(255, 255, 255, 0.4)));
+}
+.btnBox {
+  width: 5rem;
+  position: absolute;
+  left: 50%;
+  margin-left: -2.5rem;
+  bottom: 4.5rem;
+}
+.btnBox div {
+  width: 5rem;
+  height: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.5rem;
+  text-align: center;
+  line-height: 1rem;
+}
+.btnBox .active {
+  background: rgba(255, 255, 255, 0.3);
+}
+.btnBox .login {
+  margin-bottom: 0.5rem;
+}
+.other_text {
+  font-size: 0.4rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  color: #999;
+  bottom: 2.26rem;
+}
+.other_login {
+  width: 7.8667rem;
+  height: 0.88rem;
+  position: absolute;
+  left: 50%;
+  margin-left: -3.93rem;
+  bottom: 1rem;
+  clear: both;
+}
+.other_login a {
+  display: block;
+  float: left;
+  width: 0.88rem;
+  height: 0.88rem;
+  background: url(../../images/user/qqIcon.png) no-repeat;
+  background-size: cover;
+  margin: 0 0.8rem;
+}
+.other_login #weixin {
+  background-image: url(../../images/user/wechatIcon.png);
+}
+.other_login #sinaweibo {
+  background-image: url(../../images/user/weiboIcon.png);
+}

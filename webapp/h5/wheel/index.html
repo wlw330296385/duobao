@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>幸运转盘</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/awardrotate.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/collect.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/share.js?v=201605061208"></script>
+<script type="text/javascript" src="js/web_alert.js?v=201605061207"></script>
+<script type="text/javascript" src="js/tip_alert.js?v=201605061207"></script>
+<style type="text/css">
+.rote_ios{
+animation:rote 0.1s;
+-moz-animation:rote 0.1s; /* Firefox */
+-webkit-animation:rote 0.1s; /* Safari and Chrome */
+-o-animation:rote 0.1s; /* Opera */
+animation-iteration-count: infinite;
+-webkit-animation-iteration-count: infinite;
+transition-timing-function: ease;
+}
+@keyframes rote
+{
+0%   {transform:rotate(0deg);-ms-transform:rotate(0deg); /* IE 9 */-webkit-transform:rotate(0deg); /* Safari and Chrome */}
+100% {transform:rotate(360deg);-ms-transform:rotate(360deg); /* IE 9 */-webkit-transform:rotate(360deg); /* Safari and Chrome */}
+}
+@-moz-keyframes rote /* Firefox */
+{
+0%   {transform:rotate(0deg);-ms-transform:rotate(0deg); /* IE 9 */-webkit-transform:rotate(0deg); /* Safari and Chrome */}
+100% {transform:rotate(360deg);-ms-transform:rotate(360deg); /* IE 9 */-webkit-transform:rotate(360deg); /* Safari and Chrome */}
+}
+@-webkit-keyframes rote /* Safari and Chrome */
+{
+0%   {transform:rotate(0deg);-ms-transform:rotate(0deg); /* IE 9 */-webkit-transform:rotate(0deg); /* Safari and Chrome */}
+100% {transform:rotate(360deg);-ms-transform:rotate(360deg); /* IE 9 */-webkit-transform:rotate(360deg); /* Safari and Chrome */}
+}
+@-o-keyframes rote /* Opera */
+{
+0%   {transform:rotate(0deg);-ms-transform:rotate(0deg); /* IE 9 */-webkit-transform:rotate(0deg); /* Safari and Chrome */}
+100% {transform:rotate(360deg);-ms-transform:rotate(360deg); /* IE 9 */-webkit-transform:rotate(360deg); /* Safari and Chrome */}
+}
+</style>
+</head>
+<body>
+<div class="header_t">
+<div class="lucky">
+<img src="img/luck.jpg" width="50px">
+<div class="news">
+<div id="scrollobj" style="white-space:nowrap;overflow:hidden; padding-top:5px;"></div>
+</div>
+</div>
+<img src="img/header.jpg" width="100%">
+<img class="rule_down" src="img/rule_down.png" width="10%">
+</div>
+<div class="top_all">
+<span class="top_l">游戏次数：<i id="remain" class="game_num">加载中...</i></span>
+<a href="javascript:;" id="open_prize_list" style="display: none"><span class="top_r">领取记录 <img class="arr" src="img/arr.png" width="9"></span></a>
+</div>
+<div class="turntable">
+<img id="btn_lottery" class="btn" src="img/button.png" width="20%" >
+<img class="rotate" id="rotate" src="img/rotate.png" width="86%">
+<img src="img/zp_bg.jpg" width="100%">
+</div>
+<div class="content">
+<span id="recharge" class="recharge">充值抽奖</span>
+<span id="share" class="share current">分享再玩一次</span>
+</div>
+<div class="meng meng_rule">
+<div class="rule_all">
+<div class="rule">
+<h1>【幸运大抽奖】活动规则</h1>
+<ul>
+<li class="tb">活动时间：</li>
+<li>即日起生效，具体结束时间请留意1块夺宝官方发布。</li>
+<li>参与活动用户资格：</li>
+<li>1块夺宝注册用户。</li>
+<li class="tb">活动细则：</li>
+<li>1.抽奖次数获取方式：</li>
+<li>a.每日登录1块夺宝，均可获得1次抽奖机会，仅限当天使用；</li>
+<li>b.活动期间内，单次充值满100元即可获得1次抽奖。</li>
+<li>c.每日首次分享成功即可获得一次抽奖机会</li>
+</ul>
+</div>
+<img class="rule_up" src="img/rule_up.png" width="10%">
+</div>
+</div>
+<div class="meng meng1">
+<div class="meng_t">
+<img class="meng00" src="img/mengban1.png" width="90%">
+<span class="next next1"></span>
+</div>
+</div>
+<div class="meng meng2">
+<div class="meng2_all">
+<div class="meng_t">
+<img class="meng00" src="img/mengban2.png" width="90%">
+<img class="meng2_share" src="img/meng2_share.png" width="43%">
+<span class="next next2"></span>
+</div>
+</div>
+</div>
+<div class="meng meng3">
+<div class="meng_t meng_t3">
+<img class="meng00" src="img/mengban3.png" width="90%">
+<span class="next next3"></span>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+webAlert.init();
+  tipAlert.init();
+
+  /*$('.close').click(function(){
+    $('.meng4').hide();
+  })*/
+  $(function(){
+    if ($.cookie('lottery_guide') != 1) {
+    $('.meng1').show();
+  }
+    // 规则
+    $('.rule_down').click(function(){
+      $('.meng_rule').show();
+    });
+    $('.rule_up').click(function(){
+      $('.meng_rule').hide();
+    });
+    //初始蒙版
+    $('.next1').click(function(){
+      $('.meng1').hide();
+      $('.meng2').show();
+    });
+    $('.next2 ,.meng2_share').click(function(){
+      $('.meng2').hide();
+      $('.meng3').show();
+    });
+    $('.next3').click(function(){
+      $('.meng3').hide();
+      $.cookie('lottery_guide', 1, {expires:30 * 12});
+      // localStorage.setItem('lottery_guide',1);
+    });
+  })
+  
+
+  // 幸运榜轮播
+  function news_run() {
+    var obj = document.getElementById('scrollobj');
+    var tmp = (obj.scrollLeft)++;
+    //当滚动条到达右边顶端时
+    if (obj.scrollLeft==tmp) obj.innerHTML += obj.innerHTML;
+    //当滚动条滚动了初始内容的宽度时滚动条回到最左端
+    if (obj.scrollLeft>=obj.firstChild.offsetWidth) obj.scrollLeft=0;
+  }
+  
+  // 转盘转动
+  var rotateTimeOut = function (){
+    $('#rotate').rotate({
+      angle:0,
+      animateTo:2160,
+      duration:8000,
+      callback:function (){
+        //alert('网络超时，请检查您的网络设置！');
+      }
+    });
+  };
+  var bRotate = false;
+
+  var rotateFn = function (awards, angles, txt){
+    bRotate = !bRotate;
+    $('#rotate').stopRotate();
+    $('#rotate').rotate({
+      angle:0,
+      animateTo:angles+2160,
+      duration:5000,
+      callback:function (){
+        tipAlert.hide();
+        if (awards == 2) {
+          webAlert.show_red(txt);
+        } else {
+          webAlert.show(txt);
+        }
+        if (remain > 0) {
+          btn_lottery.click(submitLottery);
+        } else {
+          btn_lottery.click(function() {webAlert.show_recharge();});
+        }
+        bRotate = !bRotate;
+      }
+    })
+  };
+  function rnd(n, m){
+    return Math.floor(Math.random()*(m-n+1)+n)
+  }
+  function rotate(index, msg){
+    if(bRotate)return;
+    numb1 = rnd(310,350);
+    numb2 = rnd(250,290);
+    numb3 = rnd(190,230);
+    numb4 = rnd(130,170);
+    numb5 = rnd(70,110);
+    numb6 = rnd(10,50);
+    switch (index) {
+      case 0:
+        rotateFn(0, numb4, msg);
+        break;
+      case 1:
+        rotateFn(1, numb5, msg);
+        break;
+      case 2:
+        rotateFn(2, numb6, msg);
+        break;
+      case 3:
+        rotateFn(3, numb1, msg);
+        break;
+      case 4:
+        rotateFn(4, numb2, msg);
+        break;
+      case 5:
+        rotateFn(5, numb3, msg);
+        break;
+    } 
+  }
+
+
+// 超时计时器
+var interval_id = -1;
+var count_time = 30;
+function count_down() {
+  count_time-=1;
+  if (count_time <= 0) {
+    tipAlert.hide();
+    rotate_obj.removeClass('rote_ios');
+    webAlert.show_tip('网络发生错误，请重新进入页面');
+    if (remain > 0){
+      btn_lottery.click(submitLottery);
+    }
+    count_time = 30;
+    clearInterval(interval_id);
+  }
+}
+function start_count_down() {
+  interval_id = setInterval('count_down()', 1000);
+}
+function getQueryString(name) { 
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+  var r = window.location.search.substr(1).match(reg); 
+  if (r != null) return unescape(r[2]); return null; 
+}
+
+trackEvent('幸运大抽奖', '首页');
+// collectDisplay('kied');
+var remain = 0;
+var remain_obj = $('#remain');
+var btn_lottery = $('#btn_lottery');
+var rotate_obj = $('#rotate');
+var platform = getPlatform();
+var getpar = {
+      uid:getQueryString('uid'),
+      encrypt:getQueryString('secret')
+  };
+$(function() {
+  // alert('活动还未开始，敬请期待!0'+window.location.href);
+  $.getJSON('http://duobao.nntzd.com/index.php?g=Api&m=Activity&a=loadinfo',getpar,function(ret){
+    loadLotteryData(ret);
+  })
+
+init();
+
+function init() {
+  $('#open_prize_list').click(function() {
+    openPage('奖品领取情况', 'GET', getHostPage('/activity/lottery/lottery_list.html'), {}); 
+  });
+
+  var btn_recharge = $('#recharge');
+  var btn_share = $('#share');
+  
+  btn_recharge.click(function() {
+    // trackEvent('幸运大抽奖', '充值点击');
+    if (platform == 'ios') {
+      loadURL("duobao://openRechargePayFram?money=100");
+    } else {
+      window.wst.openRechargePayFram("100");
+    }
+  });
+  btn_share.click(function() {
+    // trackEvent('幸运大抽奖', '分享点击');
+    lottery_share('share_callback');
+  });
+}
+});
+
+function loadLotteryData(res) {
+  // var res = JSON.parse(res);
+  if (res.code == 0) {
+    remain = res.remain;
+    remain_obj.text(remain);
+    if (remain > 0) {
+      // bind click event
+      btn_lottery.click(submitLottery);
+    } else {
+      btn_lottery.click(function() {webAlert.show_recharge();});
+    }
+
+    $.each(res.rewards, function(index, item) {
+      if (item.nickname.length > 15) {
+        item.nickname = item.nickname.substr(0, 15) + '...';
+      }
+      //良辰中了必有谢1</i>&nbsp;获得<b class="get">“2元红包”</b>
+      $('#scrollobj').append('&nbsp;&nbsp;&nbsp;&nbsp;' + item.nickname + item.value.substr(0, 2) + '<b class="get" style="color:#fff600">' + item.value.substr(2) + '</b>');
+    });
+    if (res.rewards.length > 0) {
+      setInterval(news_run, 25);
+    }
+  }
+}
+
+function submitLottery() {
+  trackEvent('幸运大抽奖', '抽奖点击');
+  btn_lottery.unbind('click');
+  remain -= 1;
+  remain_obj.text(remain);
+  if (platform == 'ios') {
+    start_count_down();
+    rotate_obj.addClass('rote_ios');
+    tipAlert.show();
+  }
+  $.getJSON('http://duobao.nntzd.com/index.php?g=Api&m=Activity&a=lottery',getpar,function(ret){
+    if(ret){
+      submitLotteryCheck(ret);
+    }
+  })
+}
+
+function submitLotteryCheck(res) {
+  remain = res.remain;
+  remain_obj.text(remain);
+  if (platform == 'ios') {
+    clearInterval(interval_id);
+    rotate_obj.removeClass('rote_ios');
+  }
+  if (res.code != 0) {
+    nativeAlert('提示', res.msg);
+    if (remain > 0) {
+      btn_lottery.click(submitLottery);
+    }
+  } else {
+    // collectJoin('kied');
+    var index = res.index;
+    // var index = getQueryString('index');
+    if (typeof(index) != 'undefined') {
+      rotate(index, res.info);
+      if (platform != 'ios') {
+        tipAlert.show();
+      }
+    } else {
+      nativeAlert('提示', '网络发生错误！');
+    }
+  }
+}
+
+</script>
+</html>

@@ -1,0 +1,430 @@
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: "微软雅黑";
+			}
+			
+			#p_2 {
+				background-size: 100% 100%;
+			}
+			
+			img {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			.music {
+				display: none;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#shak {
+				animation: shak 2s linear infinite;
+				-webkit-animation: shak 1.5s linear infinite;
+			}
+			
+			.page {
+				display: none;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#p_1 {
+				display: block;
+			}
+			
+			.p_1 img {
+				-webkit-animation-name: rotate;
+				-webkit-animation-duration: 0.5s;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-transition-timing-function: linear;
+				animation: pound .25s infinite alternate;
+			}
+			
+			#p_3 {
+				font-size: 22PX;
+			}
+			
+			#proBox {
+				text-align: center;
+			}
+			
+			#button {
+				position: absolute;
+				top: 40%;
+				left: 8%;
+				z-index: 3;
+			}
+			
+			#button img {
+				width: 40%;
+				height=40%;
+				margin-left: 32%;
+				z-index: 3;
+			}
+			
+			#gro img {
+				width: 20%;
+				position: absolute;
+				bottom: 30%;
+				left: 35%;
+			}
+			
+			#grotwo img {
+				width: 20%;
+				position: absolute;
+				bottom: 20%;
+				left: 35%;
+			}
+			
+			#share {
+				background: rgba(0, 0, 0, 0.8);
+				display: none;
+			}
+			
+			.bo {
+				width: 90%;
+				border-radius: 10px;
+				background: #EDA536;
+				padding: 10px;
+				position: absolute;
+				top: 25%;
+				left: 2.5%;
+			}
+			
+			#overBox {
+				position: absolute;
+				bottom: 5%;
+				left: 0;
+				width: 100%;
+			}
+			
+			#dana {
+				z-index: 50px;
+				position: absolute;
+				top: 37%;
+				left: 0;
+			}
+			
+			#test {
+				z-index: 50px;
+				width: 75%;
+				color: #3a2001;
+				font-size: 0.6em;
+				position: absolute;
+				top: 48%;
+				left: 12%;
+			}
+			
+			#home {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.hide {
+				display: none
+			}
+			
+			#loading {
+				display: block;
+				font-size: 14px;
+				text-align: center;
+				color: #000
+			}
+			
+			#loading .loading-txt {
+				height: 100px;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 60px;
+				margin: auto
+			}
+			
+			#proBox {
+				width: 100%;
+				position: absolute;
+				bottom: 5%;
+				left: 0;
+			}
+			
+			#probor {
+				width: 90%;
+				margin: 0 auto;
+				border: 3px solid #fff;
+				border-radius: 5px;
+			}
+			
+			#pro {
+				background: #FF0000;
+				height: 5px;
+				border-radius: 5px;
+			}
+			
+			#shuru {
+				position: absolute;
+				bottom: 10%;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				/*-webkit-animation-delay: 1s;*/
+			}
+			
+			#shuru input {
+				border: none;
+				padding: 5px;
+				border-radius: 5px;
+			}
+			
+			#shuru .inp {
+				margin-bottom: 8px;
+			}
+			
+			#logoBox {
+				text-align: center;
+				position: absolute;
+				top: 3%;
+				right: 0;
+				z-index: 3;
+			}
+			
+			#logoBox img {
+				-webkit-animation: munisc 1s infinite linear;
+			}
+			
+			@-webkit-keyframes munisc {
+				from {
+					-webkit-transform: rotate(0);
+				}
+				to {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			
+			#btn_start img {
+				width: 40%;
+			}
+			
+			#p_2 h1 {
+				font-size: 1em;
+				color: #fff;
+			}
+			
+			#p_3 h1 {
+				font-size: 25PX;
+				color: #FFFFFF;
+				margin-top: 13%;
+				margin-left: 10%;
+			}
+			/*#bo {
+				background: linear-gradient(left, #000, #FFF);
+				
+				/*自左向右渐变*/
+		}
+		*/ #picture {
+			width: 100%;
+			margin: auto;
+		}
+		#say {
+			text-align: center;
+			width: 80%;
+			margin-top: -12px;
+			margin-left: 8%;
+		}
+		#mo {
+			width: 80%;
+			height: 40%;
+			border-radius: 10px;
+			padding: 20px 20px;
+			background: #eda536;
+			color: #FFFFFF;
+			font-size: 18px;
+			position: absolute;
+			left: 5%;
+			top: 10%;
+		}
+		#say div {
+			font-size: 0.9em;
+			background: #f9bf50;
+			color: #000000;
+			padding: 10px 15px;
+			border: solid 1px #936f38;
+			border-radius: 5px;
+			width: 78%;
+			margin: 10px auto;
+			text-align: left;
+		}
+		.result {
+			/*width: 100%;
+			height: 100%;
+			display: none;
+			background: rgba(0, 0, 0, 0.8);*/
+		}
+		#pic {
+			/*display:none ;*/
+			/*width: 20%;
+			position: absolute;
+			left: 42%;
+			top: 38%;*/
+		}
+		#text {
+			font-size: 22px;
+			font-weight: bold;
+			text-align: center;
+		}
+		
+		#gun {
+			/*position: absolute;
+			left: 31%;
+			bottom: 44%;*/
+		}
+		.btn{padding: 5px 35px;
+			background: #f14589;
+			color: #FFFFFF;
+			border-radius: 10px;
+			font-size: 15px; display: block; margin: 10px 0; text-decoration: underline;}
+		#cc {
+			/*display: none;*/
+			
+			/*position: absolute;
+			left: 31%;
+			bottom: 38%;*/
+		}
+		#bb {
+			/*display: none;*/
+			/*position: absolute;
+			left: 31%;
+			bottom: 38%;*/
+		}
+		#entry {
+			display: none;
+			/*position: absolute;
+			bottom: 49%;
+			width: 100%;*/
+			text-align: center;
+			/*-webkit-animation-delay: 1s;*/
+		}
+		#entry input {
+			border: none;
+			padding: 2.5px;
+			border-radius: 5px;
+		}
+		#entry .inp {
+			margin-bottom: 10px;
+		}
+		@-webkit-keyframes shak {
+			0% {
+				transform: scale(1);
+				-webkit-transform: scale(1);
+			}
+			
+			50% {
+				transform: scale(1.2);
+				-webkit-transform: scale(1.2);
+			}
+			
+			100% {
+				transform: scale(1);
+				-webkit-transform: scale(1);
+			}
+		}
+		@keyframes shak {
+			0% {
+				transform: scale(1);
+				-webkit-transform: scale(1);
+			}
+			
+			50% {
+				transform: scale(1.2);
+				-webkit-transform: scale(1.2);
+			}
+			
+			100% {
+				transform: scale(1);
+				-webkit-transform: scale(1);
+			}
+		}
+		#shuru {
+			animation: shak 2s linear infinite;
+			-webkit-animation: shak 1.5s linear infinite;
+		}
+		#btn_next {
+			-webkit-animation: heartbeat ease-in-out 0.8s infinite alternate;
+			-ms-animation: heartbeat ease-in-out 0.8s infinite alternate;
+			animation: heartbeat ease-in-out 0.8s infinite alternate;
+			display: inline-block
+		}
+		@-webkit-keyframes heartbeat {
+			0% {
+				-webkit-transform: scale(0.9)
+			}
+			
+			9% {
+				-webkit-transform: scale(1.2)
+			}
+			
+			18% {
+				-webkit-transform: scale(0.9)
+			}
+			
+			25% {
+				-webkit-transform: scale(1)
+			}
+			
+			100% {
+				-webkit-transform: scale(1)
+			}
+		}
+		@-ms-keyframes heartbeat {
+			0% {
+				-ms-transform: scale(0.9)
+			}
+			
+			9% {
+				-ms-transform: scale(1.2)
+			}
+			
+			18% {
+				-ms-transform: scale(0.9)
+			}
+			
+			25% {
+				-ms-transform: scale(1)
+			}
+			
+			100% {
+				-ms-transform: scale(1)
+			}
+			
+			@keyframes heartbeat {
+				0% {
+					transform: scale(0.9)
+				}
+				9% {
+					transform: scale(1.2)
+				}
+				18% {
+					transform: scale(0.9)
+				}
+				25% {
+					transform: scale(1)
+				}
+				100% {
+					transform: scale(1)
+				}
+			}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ch" manifest="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>1块夺宝给您拜年啦！</title>
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="pragram" content="no-cache">
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/endpic.css">
+<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+
+<script type="text/javascript" src="js/offline.js"></script>
+<!--移动端版本兼容 -->
+<script type="text/javascript">
+            var mengvalue = -1;
+            //if(mengvalue<0){mengvalue=0;}
+            var phoneWidth = parseInt(window.screen.width);
+            var phoneScale = phoneWidth / 640;
+
+            var ua = navigator.userAgent;
+            if (/Android (\d+\.\d+)/.test(ua)) {
+                var version = parseFloat(RegExp.$1);
+                // andriod 2.3
+                if (version > 2.3) {
+                    document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                    // andriod 2.3以上
+                } else {
+                    document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+                }
+                // 其他系统
+            } else {
+                document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+            }
+        </script>
+		
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<!--移动端版本兼容 end -->
+<style type="text/css">
+.s01{-webkit-animation-delay: 0.1s;  /*动画开始时间*/}
+.s02{-webkit-animation-delay: 0.2s;  /*动画开始时间*/}
+.s03{-webkit-animation-delay: 0.3s;  /*动画开始时间*/}
+.s04{-webkit-animation-delay: 0.4s;  /*动画开始时间*/}
+.s05{-webkit-animation-delay: 0.5s;  /*动画开始时间*/}
+.s06{-webkit-animation-delay: 0.6s;  /*动画开始时间*/}
+.s07{-webkit-animation-delay: 0.7s;  /*动画开始时间*/}
+.s08{-webkit-animation-delay: 0.8s;  /*动画开始时间*/}
+.s09{-webkit-animation-delay: 0.9s;  /*动画开始时间*/}
+.s1{-webkit-animation-delay: 1s;  /*动画开始时间*/}
+.s105{-webkit-animation-delay: 1.5s;  /*动画开始时间*/}
+.s2{-webkit-animation-delay: 2s;  /*动画开始时间*/}
+.s205{-webkit-animation-delay: 2.5s;  /*动画开始时间*/}
+.s3{-webkit-animation-delay: 3s;  /*动画开始时间*/}
+.s305{-webkit-animation-delay: 3.5s;  /*动画开始时间*/}
+.s4{-webkit-animation-delay: 4s;  /*动画开始时间*/}
+.s405{-webkit-animation-delay: 4.5s;  /*动画开始时间*/}
+.s5{-webkit-animation-delay: 5s;  /*动画开始时间*/}
+.s505{-webkit-animation-delay: 5.5s;  /*动画开始时间*/}
+.s6{-webkit-animation-delay: 6s;  /*动画开始时间*/}
+.s605{-webkit-animation-delay: 6.5s;  /*动画开始时间*/}
+.s2{-webkit-animation-delay: 2s;  /*动画开始时间*/}
+.s3{-webkit-animation-delay: 3s;  /*动画开始时间*/}
+.s4{-webkit-animation-delay: 4s;  /*动画开始时间*/}
+.s5{-webkit-animation-delay: 5s;  /*动画开始时间*/}
+
+.d05{-webkit-animation-duration: 0.5s;  /*动画执行时间*/}
+.d1{-webkit-animation-duration: 1s;  /*动画执行时间*/}
+.d2{-webkit-animation-duration: 2s;  /*动画执行时间*/}
+.d3{-webkit-animation-duration: 3s;  /*动画执行时间*/}
+.d4{-webkit-animation-duration: 4s;  /*动画执行时间*/}
+.d5{-webkit-animation-duration: 5s;  /*动画执行时间*/}
+.d10{-webkit-animation-duration: 10s;  /*动画执行时间*/}
+.d20{-webkit-animation-duration: 20s;  /*动画执行时间*/}
+.d100{-webkit-animation-duration: 100s;  /*动画执行时间*/}
+
+.reverse{animation-direction:reverse;	/*动画逆向播放*/}
+.markBox{
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	background: url(img/mark.png) repeat-y;
+	z-index: 10;
+	background-position:left 100%;
+	animation: toScroll 8s linear infinite;
+	-webkit-animation: toScroll 8s linear infinite;
+}
+@keyframes toScroll{
+	from{
+		background-position:left 100%;
+	}
+	to{
+		background-position:left 0%;
+	}
+}
+@-webkit-keyframes toScroll{
+	from{
+		background-position:left 100%;
+	}
+	to{
+		background-position:left 0%;
+	}
+}
+</style>
+</head>
+		<body class="s-bg-ddd pc no-3d" style="-webkit-user-select: none; background-color: #bb111a;">
+		
+		<!--模版加载提示-->
+		<section class="u-alert">
+
+			<img style="display:none;" src="img/loading_large.gif">
+			<div class="alert-loading z-move">
+				<div class="cycleWrap">
+					<span class="cycle cycle-1"></span>
+					<span class="cycle cycle-2"></span>
+					<span class="cycle cycle-3"></span>
+					<span class="cycle cycle-4"></span>
+				</div>			
+				<div class="lineWrap">
+					<span class="line line-1"></span>
+					<span class="line line-2"></span>
+					<span class="line line-3"></span>
+				</div>
+			</div>
+		</section>
+		<!--模版加载提示 end-->
+		<!-- 声音控件 -->
+		<section class="u-audio" data-src="mp3/mp3.mp3">
+			<p id="coffee_flow" class="btn_audio">
+				<strong class="txt_audio z-hide">关闭</strong>
+				<span class="css_sprite01 audio_open"></span>
+				<div id="song_img" style=" display: none;"></div>
+				<div class="coffee-steam-box" style="height: 100px; width: 44px; left: 60px; top: -50px; position: absolute; overflow: hidden; z-index: 0;"></div>
+			</p>
+		</section>
+		<!-- 声音控件 end-->
+		<section class="u-arrow">
+			<p class="css_sprite01"></p>
+		</section>
+		<!-- 箭头指示引导 end-->
+		<!-- page页面内容 -->		
+		<section class="p-ct transformNode-2d" style="height: 100%;">
+			<!-- 旋转反面 -->
+			<div class="translate-back" style="height: 100%;">
+				<!-- 擦一擦--><!-- 蒙板背景图--><!-- 大图文 3-->
+				<!-- 封页 1-->
+				<div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3" style="height: 100%;">
+					<div class="markBox"></div>
+					<div class="page-con lazy-finish" data-position="50% 50%" data-size="cover" style="background: #ba131b url(img/bg-P1.gif); background-size: cover; background-position: 50% 50%;">
+						<img class="animated shake d20 infinite" src="img/cloud1-P1.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated shake s05 d20 infinite" src="img/cloud2-P1.png" style=" position: absolute; left: 0; top: 3%;" />
+						<img class="animated shake s1 d20 infinite" src="img/cloud3-P1.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated tada" src="img/title-P1.png" style="position: absolute; left: 0; top: 3%;" />
+						<img class="animated pulse d2 infinite" src="img/1yuan-P1.png" style="position: absolute; left: 0; top:32%; z-index: 2;" />
+						<!--<img src="img/lh-P1.png" style="position: absolute; left: 0; top: 0;" />-->
+					</div>
+				</div>
+				<!-- 封页 end-->
+				<!-- 封页 2-->
+				<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 100%;">
+					<div class="markBox"></div>
+					<div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="background: #3ecf8c url(img/bg-P2.png); background-size: cover; background-position: 50% 50%;">
+						<img class="animated fadeInLeft" src="img/l-title-P2.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated fadeInRight" src="img/r-title-P2.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated pulse s05 d2 infinite" src="img/title-P2.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated bounceInUp" src="img/monkey-P2.png" style=" position: absolute; left: 0; bottom: 3%;" />
+						<img class="animated shake d20 infinite" src="img/xy01-P2.png" style=" position: absolute; left: 0; bottom: 7%;" />
+						<img class="animated shake s05 d20 infinite" src="img/xy02-P2.png" style=" position: absolute; left: 0; bottom: 30%;" />
+						<!--<img src="img/lh-P1.png" style="position: absolute; left: 0; top: 0;" />-->
+					</div>
+				</div>
+				<!-- 封页 end-->
+				<!-- 封页 3-->
+				<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 100%;">
+					<div class="markBox"></div>
+					<div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="background: #04a2eb url(img/bg-P3.png); background-size: cover; background-position: 50% 50%;">
+						<img class="animated fadeInLeft" src="img/l-title-P3.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated fadeInRight" src="img/r-title-P3.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated pulse s05 d2 infinite" src="img/title-P3.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated bounceInDown" src="img/monkey-P3.png" style=" position: absolute; left: 0; bottom: 3%;" />
+						<img class="animated shake s05 d20 infinite" src="img/xy02-P2.png" style=" position: absolute; left: 0; bottom: 30%;" />
+						<img class="animated shake s1 d20 infinite" src="img/xy01-P2.png" style=" position: absolute; left: 0; bottom: 45%;" />
+						<!--<img src="img/lh-P1.png" style="position: absolute; left: 0; top: 0;" />-->
+					</div>
+				</div>
+				<!-- 封页 end-->
+				<!-- 封页 4-->
+				<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 100%;">
+					<div class="markBox"></div>
+					<div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="background: #ffdd3d url(img/bg-P4.png); background-size: cover; background-position: 50% 50%;">
+						<img class="animated fadeInLeft" src="img/l-title-P4.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated fadeInRight" src="img/r-title-P4.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated pulse s05 d2 infinite" src="img/title-P4.png" style=" position: absolute; left: 0; top: 0;" />
+						<img class="animated fadeInLeftBig s02" src="img/monkey-P4.png" style=" position: absolute; left: 0; bottom: 7%;" />
+						<img class="animated shake d20 infinite" src="img/xy01-P2.png" style=" position: absolute; left: 0; bottom: 5%;" />
+						<img class="animated shake s05 d20 infinite" src="img/xy02-P2.png" style=" position: absolute; left: 0; bottom: 40%;" />
+						<img class="animated shake s1 d20 infinite" src="img/xy01-P2.png" style=" position: absolute; left: 0; bottom: 55%;" />
+						<!--<img src="img/lh-P1.png" style="position: absolute; left: 0; top: 0;" />-->
+					</div>
+				</div>
+				<!-- 封页 5-->
+				<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 100%;">
+
+					<div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="background: #fa670e url(img/bg-P5.png); background-size: cover; background-position: 50% 50%;">
+						<div class="markBox"></div>
+						<img class="animated bounceInDown" src="img/title-P5.png" style=" position: absolute; left: 0; top: -3%;" />
+						<img class="animated bounceInUp s02" src="img/head-P5.png" style=" position: absolute; left: 0; bottom: -18%;" />
+						<img class="animated tada d5" src="img/T-P4.png" style="position: absolute; left: 0; top:30%;" />
+						<a href="http://duobao.nntzd.com/webapp/dowload.html" style="position: absolute; left: 0; top:45%; z-index: 999;"><img class="animated pulse infinite" src="img/btn-l-P5.png" /></a>
+						<a href="http://duobao.nntzd.com/webapp/dowload.html" style="position: absolute; right: 0; top:45%; z-index: 999;"><img class="animated pulse s08 infinite" src="img/btn-r-P5.png" /></a>
+						<img class="animated shake d20 infinite" src="img/xy01-P2.png" style=" position: absolute; left: 0; bottom: 10%;" />
+						<!--<img src="img/lh-P1.png" style="position: absolute; left: 0; top: 0;" />-->
+					</div>
+				</div>
+				<!-- 封页 end-->
+			</div>
+			<!-- 旋转反面 end-->
+		</section>
+		<!-- 正文介绍 end--<!--pageLoading-->
+		<section class="u-pageLoading">
+			<img src="img/load.gif" alt="loading">
+		</section>
+		<!--pageLoading end-->
+		<!--脚本加载-->
+		<script src="js/init.mix.js" type="text/javascript" charset="utf-8"></script>		
+		<script src="js/coffee.js" type="text/javascript" charset="utf-8"></script>				
+		<script src="js/99_main.js" type="text/javascript" charset="utf-8" defer＝'defer'=""></script>
+		<script src="js/view.js" type="text/javascript" charset="utf-8"></script><!--脚本加载 end-->
+		<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F28d43317e8a419b40943c2a7906e7fd9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</body>
+</html>

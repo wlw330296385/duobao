@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+html {
+  line-height: 1;
+}
+body { background:#f6c86a;}
+ol, ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+.turntable-bg {
+  width: 100%;
+  height:100%;
+  position: absolute;
+  bottom:0;
+}
+.turntable { width:100%; height:100%; position:relative;}
+.turntable-bg .pointer {
+    width: 30%;
+    height: 39%;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    margin-left: -15%;
+    margin-top:-15%;
+    z-index: 8;
+	border-radius:100%;
+	overflow:hidden;
+}
+.turntable-bg .pointer img {border-radius:100%;}
+.turntable-bg .rotate  img {border-radius:100%;}
+.turntable-bg .rotate {
+  width: 84%;
+  height: 107%;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -42%;
+  margin-top:-42%;
+  border-radius:100%;
+  overflow:hidden;
+}
+.content { width:100%; min-width:320px; max-width:720px;}
+.header {width:100%; position:relative; margin-bottom:44%;}
+.main { width:90%; margin:0 auto;}
+.btn-rule { line-height:44px; font-size:16px; color:#af8c48; height:33px; float:right;}
+.title { margin-bottom:10px;}
+.awards-name ul li{ width:50%; float:left; text-align:center; font-size:12px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:26px;}
+.scrolldiv{height:125px; overflow:hidden;}
+.scrolldiv span{color:red;}
+.fcred { color:#d14246}
+.awards-name { background:url(../images/awardsbg.png) no-repeat; padding:15px 15px 30px 15px; background-size:100% 97%;}
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 
+
+.footer {color:#af8c48; font-size:10px; text-align:center; padding:5px 0px;}
+.layer { display:none; position:fixed; width:100%; max-width:720px; height:100%; top:0; left:0; z-index:9; background:rgba(0,0,0,0.4)}
+.rule { display:none;  position:fixed; width:100%; max-width:720px; height:100%; top:0; left:0; z-index:99; }
+.rule-box { padding:15px 15px 30px 15px; width:86%; margin:40% auto; background:url(../images/rulebg.png) no-repeat; background-size:100% 97%;  }
+.close { float:right;}
+.rule-title , .awards-tip-title { font-size:20px; font-weight: bold; color:#524120; margin-bottom:20px;}
+.rule-nav ,.awards-tip-nav { color:#524120; font-size:14px; line-height:22px;}
+.awards-tip-nav p ,.rule-nav p { text-indent:2em;}
+.mb20 { margin-bottom:20px;}
+.awards-tip { display:none; position:fixed; width:100%; max-width:720px; height:100%; top:0; left:0; z-index:100;}
+.awards-tip-box {padding:15px 15px 30px 15px; width:86%; margin:50% auto; background:url(../images/tipbg.png) no-repeat; background-size:100% 97%;}
+.awards-tip-nav p a { color:#524120 !important;}
+.btn-red { width:80%; height:30px; display:block; text-decoration:none; text-align:center; line-height:30px; margin:20px auto 0; border-radius:8px; background:#d24144; color:#fff; font-size:18px;}

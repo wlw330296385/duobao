@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"> 
+		<title>晒单分享</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<block name="title"><title>00000000</title></block>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/mui.min.css">
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<script type="text/javascript" src="../js/template.js" ></script>
+<script type="text/javascript" src="../js/help.js" ></script>
+<script type="text/javascript" src="../js/woo.js" ></script>
+
+<style> 
+*{ 
+    margin:0; 
+    padding:0; 
+} 
+body{font-size:12px;}
+h1{font-size:15px;} 
+ p{
+ 	padding: 0;
+ 	margin: 0;
+ 	overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+ }
+ .example2 ul{
+	border-bottom: dashed 2px #D3D3D3; 	
+ }
+.example2 ul li{
+	padding: 1% 4%;
+}
+.pull-right{
+	padding-top: 4%;
+}
+.mui-active div{
+	color: #007aff;
+}
+</style> 		
+	</head>
+ <script type="text/javascript">
+        function changeBorder()
+          {
+          document.getElementById("compman").border="3"
+          }
+        </script>
+        </head>     
+	<body>	
+	<div id="box">
+
+	</div>
+
+
+	<script type="text/html" id="example2">
+  {{each}}
+	<div class="example2">
+	<ul data-aid="{{$value.aid}}">
+		<li>
+		<div class="mui-pull-left" style="width:20%">
+			<img width:"20%" class="mui-media-objecto mui-pull-left " src="{{$value.userpic}}">		
+		</div>
+		<div class="mui-pull-left" style="width:53%;padding-top: 4%;padding-left: 10%;">
+			<b style="">{{$value.nickname}}</b>
+			<p>第{{$value.section}}期{{$value.name}}</p>
+		</div>
+		<div class="mui pull-right">
+	   {{$value.atime | time}}
+	    </div>
+		<div style="clear: both;"></div>
+		<p class='' style="text-align: left; color: #000000;padding-left: 5%;padding-top:2% ;">{{if $value.des}}{{$value.des}}{{else}}这里是系统好评:棒棒哒!!开心(｡･∀･)ﾉﾞ{{/if}}</p>		
+		<div class="clearflex"></div>
+		</li>
+		
+		<li class="">
+			{{each $value.photos as p i}}
+		<img width="20%"  src="{{$value.photos[i]}}">
+			{{/each}}
+		</li>
+	</ul>				
+
+	</div>
+{{/each}}
+</script>
+
+		<nav class="mui-bar mui-bar-tab" id="home_nav">
+			<a id="defaultTab" class="mui-tab-item" href="../index.html">
+				<div class="mui-icon mui-icon-home"></div>
+				<div class="mui-tab-label">1块夺宝</div>
+			</a>
+			<a  id="quyueTab" class="mui-tab-item" href="../goods/showlist.html">
+				<div class="mui-icon mui-icon-chatboxes"></div>
+				<div class="mui-tab-label">最新揭晓</div>
+			</a>
+			<a id="rankTab" class="mui-tab-item mui-active" href="../goods/list.html">
+				<div class="mui-icon mui-icon-camera"></div>
+				<div class="mui-tab-label">晒单</div>
+			</a>
+
+			<a id="myTab" class="mui-tab-item" href="user.html">
+				<div class="mui-icon mui-icon-contact"></div>
+				<div class="mui-tab-label">我的</div>
+			</a>
+		</nav>	
+	</body>
+<script type="text/javascript">
+	var p=1,gid = 888;
+	var end=1;
+//	console.log(gid)
+	function BindList(){
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getshowslist',{'gid':gid,p:1},function(data){
+			if(data){
+				
+				for (var i = 0; i < data.length; i++) {
+					
+					var photos = data[i].photos;
+					var photoarr = photos.split('|');
+						data[i].photos = photoarr;
+				}
+				var html = template('example2',data);
+				$("#box").html(html);
+//订单跳转				
+				$("#box ul").on('click',function(){
+					var aid=$(this).attr('data-aid');
+
+					window.location.href='../goods/goods.html?aid='+aid;
+				})
+			}
+		})
+		
+	}	
+	$(function(){
+		//页面加载结束
+		//获取URL参数
+		gid = GetQueryString('gid');
+		//		验证登录
+		is_login();
+		//绑定模板
+		 BindList()
+		 // 开启上拉刷新
+		
+		// 获得URL上的aid参数
+		
+			$(window).scroll(function () {		        
+		        var bot = 50; //bot是底部距离的高度
+        		if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+        			
+		           if(end==1){
+		           	p++;
+		            $.getJSON("http://duobao.nntzd.com/?g=DuoBao&a=getshowslist", {gid:gid,p:p}, function (list2) {
+		                if(list2){
+		                    
+		                   for (var i = 0; i < list2.length; i++) {								
+								var photos = list2[i].photos;
+								var photoarr = photos.split('|');
+									list2[i].photos = photoarr;
+							}
+		                    var htmllist2= template('example2',list2);		                  
+		                    $('#box').append(htmllist2);
+//		                    点击跳转
+		                    $("#box ul").on('click',function(){
+								var aid=$(this).attr('data-aid');
+			
+								window.location.href='../good/goods.html?aid='+aid;
+							})
+		                }else{
+		                	
+		                	 $('#box').after('<p style="margin:40px 0">没有更多数据了...</p>');
+		                	end=2;
+		                }
+		              })
+		        }
+		           
+		    }
+		})
+		
+	})
+</script>
+
+</html>

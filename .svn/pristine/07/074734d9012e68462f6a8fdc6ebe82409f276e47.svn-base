@@ -1,0 +1,48 @@
+//引入基础样式
+@import "../love/base.less";
+//引入皮肤样式
+@import "../love/skin/dark.less";
+html,body{
+    width: 100%;
+    overflow-x: hidden;
+}
+.row,.col-xs-4{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    width: 100%;
+    box-sizing: border-box;
+}
+.giftList{
+    box-sizing: border-box;
+    padding: 0.5rem 0.2rem;
+    text-align: center;
+    font-size: 0.3rem;
+    border-bottom: 1px solid #8a8a8a;
+    .col-xs-4{
+        border-right: 1px dashed #8a8a8a;
+    }
+    .col-xs-4:nth-last-of-type(1){
+        border:none;
+    }
+    img{
+        width: 1.81rem;
+        height: 1.653rem;
+        display: inline-block;
+    }
+    .giftName{
+        color: @mainTxtColor;
+    }
+    .meili{
+        margin-top: 0.2rem;
+        color: @iconColor;
+    }
+    .yuebi{
+        color: yellow;
+    }
+}
+.wrap .giftList:nth-last-of-type(1){
+    border: none;
+}
+

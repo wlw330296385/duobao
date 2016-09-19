@@ -1,0 +1,77 @@
+//引入基础样式
+@import "../love/base.less";
+//引入皮肤样式
+@import "../love/skin/dark.less";
+@textColor: #999;
+header{
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+    .bigTextFs();
+    color: @textColor;
+    background: @appStyle;
+    position: relative;
+    overflow: hidden;
+    span{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 33.33%;
+        background: @iconColor;
+        transition: 0.5s;
+    }
+}
+.topBox{
+    width: 100%;
+    overflow: hidden;
+    top: 1.5rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+   padding-top: 0.4rem;
+}
+.mui-scroll{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 92%;
+    left: 4%;
+}
+.topList{
+    height: 1.8rem;
+    background: @appStyle;
+    line-height: 1.8rem;
+    text-align: center;
+    .bigTextFs();
+    color: @textColor;
+    margin-bottom: 0.1rem;
+    border-radius: 20px;
+    .userImg{
+        width: 1rem;
+        height: 1rem;
+        border-radius: 0.5rem;
+        display: inline-block;
+    }
+    .order{
+        text-align: left;
+    }
+    .order img{
+        display: inline-block;
+        width: 0.5rem;
+        margin: 0 3px;
+    }
+    .userName,.nuserM{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+    }
+    .nuserM{
+        color: @iconColor;
+    }
+}
+.line{
+    width: 20%;
+    height: 4px;
+    margin: 10px auto;
+    background: @textColor;
+}

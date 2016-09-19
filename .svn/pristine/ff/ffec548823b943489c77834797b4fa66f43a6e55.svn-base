@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>公告</title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jwweixxin-1.0.0.js" ></script>
+		<script type="text/javascript" src="js/template.js"></script>
+		<script type="text/javascript" src="js/help.js"></script>
+		<script type="text/javascript" src="js/woo.js"></script>
+	</head>
+	<style>
+		*{
+			border: 0;padding: 0;
+			margin: auto;list-style: none;
+			/*vertical-align: auto;*/
+		}
+		.o{
+			/*display: inline-block;*/
+			float: left;
+		}
+		span{
+			display: inline-flex;
+			font-size: 1em;
+			line-height: 2.5;
+		}
+		li{
+			width: 100%;
+			margin-top: 2%;
+			border-bottom: 1px solid #d3d3d3;
+		}
+		.b{
+			font-size: 0.8em;
+			padding: 0;
+			color: #B3B3B3;
+		}
+	</style>
+	<body>
+		<header></header>
+		<div>
+			<ul>
+				
+			</ul>
+		</div>
+		<footer></footer>
+		<script type="text/html" id="list">
+		{{each}}
+		<li>
+		<a href="announce_detail.html?id={$value.id}">
+				<div class="o" style="width: 20%;text-align: center;">
+					<img src="{{if $value.ico}}{{$value.ico}}{{else}}img/ico.png{{/if}}" width="80%" />
+				</div>
+				<div class="o" style="width: 78%;">
+					<div><span style="width:60%;font-weight: bold;">{{$value.title}}</span><span class="b" style="width: 40%;">{{$value.atime | time}}</span></div>
+					<div><p class="b">{{$value.content}}</p></div>
+				</div>
+				</a>
+				<div style="clear: both;"></div>
+				</li>
+		{{/each}}
+		</script>
+	</body>
+	<script>
+
+//	http://duobao.nntzd.com/?g=DuoBao&m=Homeann&a=announce_list
+$(function(){
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=Homeann&a=announce_list','',function(msg){
+			if(msg){
+				var htmlll=template('list',msg.announce);
+				$('body ul').html(htmlll)
+			}
+		})
+	})
+	</script>
+</html>

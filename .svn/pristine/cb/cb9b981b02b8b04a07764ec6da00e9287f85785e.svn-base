@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=8">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<title>送5000</title>
+		<style type="text/css">
+			html,body,div,img,a{margin: 0; padding: 0; border: 0;}
+			img{vertical-align:bottom;}
+		</style>
+		<script type="text/javascript">
+		
+			function loadURL(url) {
+                var iFrame;
+                iFrame = document.createElement("iframe");
+                iFrame.setAttribute("src", url);
+                iFrame.setAttribute("style", "display:none;");
+                iFrame.setAttribute("height", "0px");
+                iFrame.setAttribute("width", "0px");
+                iFrame.setAttribute("frameborder", "0");
+                document.body.appendChild(iFrame);
+                // 发起请求后这个 iFrame 就没用了，所以把它从 dom 上移除掉
+                iFrame.parentNode.removeChild(iFrame);
+                iFrame = null;
+            }
+			
+			function getQueryString(name) { 
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+				var r = window.location.search.substr(1).match(reg); 
+				if (r != null) return unescape(r[2]); return null; 
+			}
+			function openLoginFram(){
+            		loadURL("duobao://openLoginFram");
+            		window.wst.openLoginFram();
+            }
+			function reg(){
+				var uid  = getQueryString('uid');
+				var f  = getQueryString('f');
+				alert('活动还未开始_'+uid);
+				if(uid == '' || uid == null){
+					openLoginFram();
+				}else if(f != 'app'){
+					window.location.href = 'http://duobao.nntzd.com/webapp/dowload.html?f=gift5000';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class=""><img src="p1.jpg" width="100%"/></div>
+	</body>
+</html>

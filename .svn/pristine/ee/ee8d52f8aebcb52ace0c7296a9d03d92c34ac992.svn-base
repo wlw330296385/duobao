@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>1块夺宝</title>
+		<style type="text/css">
+			img{max-width: 100%;}
+			#freeDown{margin-bottom: 30px; font-size: 20px; background: #0044ce; color: #fff; border: none; padding: 10px 20px; border-radius: 10px;}
+		</style>
+	</head>
+	<body style="text-align: center;">
+		<div id="tip" style="text-align: right; font-size: 30px; background:#990000; color: #fff; line-height: 120px; border-bottom: 1px solid #000; display: none;">
+			请点击右上角【在Safari中打开】 ↑ &nbsp;
+		</div>
+		<img src="icon.png" />
+		<h3>1块夺宝</h3>
+		<div>
+			<button id="freeDown">点击开始夺宝</button>
+		</div>
+		<div class="">
+			<img src="01.png"/>
+		</div>
+		<div class="">
+			<img src="02.png"/>
+		</div>
+		<div class="">
+			<img src="03.png"/>
+		</div>
+		<div class="">
+			<img src="04.png"/>
+		</div>
+		<div class="">
+			<img src="05.png"/>
+		</div>
+		
+		<section id="content">
+			<h3>内容提要</h3>
+			<div class="detail">
+				1块夺宝<br/>
+				1块夺宝,一种新的众筹购物方式<br/>
+				在1块夺宝中，你可以参与苹果全系列众筹活动，实现自己一元获得苹果系列产品的愿望<br/>
+				<br/>
+				【实现愿望，只要一块】<br/>
+				苹果全系列产品，等着你的到来！<br/>
+				只要一块，就克实现拥有苹果系列产品的愿望！<br />
+				<br/>
+				【公平公正透明的原则】<br/>
+				公平：所有参与用户，都享受同样的权利和义务<br/>
+				透明：计算公司和相关数据完全公开。<br />
+				<br/>
+				【紧张刺激的等待】<br/>
+				一旦参与夺宝，你就能体验到不一样的紧张刺激！<br/>
+				
+			</div>
+			<h3>信息</h3>
+			<div class="detail info">
+				<p><i>开发商：</i><span>广西南宁天知道科技</span></p>
+				<p><i>类别：</i><span>商城购物</span></p>
+				<p><i>更新于：</i><span>2016年01月12日</span></p>
+				<p><i>版本：</i><span>1.0.0</span></p>
+				<p><i>支持平台：</i><span>iOS</span> ， <span>安卓</span></p>
+			</div>
+		</section>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+
+				var u = navigator.userAgent, app = navigator.appVersion;
+				var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+				var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+				document.getElementById('freeDown').addEventListener('touchstart', function(){
+					var ua = navigator.userAgent.toLowerCase();  
+						if(isiOS){
+						        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.tianzhidao.indiana&g_f=991653'; 			
+						}
+						else{
+							window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.tianzhidao.indiana&g_f=991653';
+						}
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+//					        document.getElementById('tip').style.display = 'block';
+					    } 
+					    else {  
+							if(isiOS){
+							        window.location.href = 'https://itunes.apple.com/cn/app/id1058821200'; 		
+							}else{
+								window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.tianzhidao.indiana';
+							}
+						}  		
+				}, false)
+			}
+		</script>
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?1ae2bf3e81df474afe7b96df997e2bf0";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+
+	</body>
+</html>

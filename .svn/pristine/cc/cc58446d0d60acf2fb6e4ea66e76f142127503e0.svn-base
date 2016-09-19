@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>1块夺宝</title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/woo.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/swiper.css" />
+		<script type="text/javascript" src="js/jwweixxin-1.0.0.js" ></script>
+		<script type="text/javascript" src="js/swiper.js"></script>
+		<script type="text/javascript" src="js/template.js"></script>
+		<script type="text/javascript" src="js/help.js"></script>
+		<script type="text/javascript" src="js/woo.js"></script>		
+		<style>
+			* {
+				font-size: 12px;
+			}
+			body{
+				Font-size=62.5%;
+			}
+			.mui-active div {
+				color: #007aff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="one">
+				<div class="swiper-container" style="width:100%">
+					<div class="swiper-wrapper" style="width:100%">
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+			<br>
+			<div class="two">
+				<ul>
+					<a href="goods/list.html">
+						<li><img src="img/love.gif" width="100%" alt="" /><div>晒单</div></li>
+					</a>
+					<a href="announce.html">
+						<li><img src="img/new.gif" width="100%" alt="" /><div>公告</div></li>
+					</a>
+					<a href="http://duobao.nntzd.com/webapp/apprentice.html">
+						<li><img src="img/son.gif" width="100%" alt="" /><div>招募徒弟</div></li>
+					</a>
+					<a href="http://duobao.nntzd.com/webapp/duobaoqustion.html">
+						<li><img src="img/QS.gif" width="100%" alt="" /><div>常见问题</div></li>
+					</a>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+			<a href="goods/list.html" class="news">
+				<div>最新揭晓<span class="mui-icon mui-icon-forward"></span><span>更多</span></div>
+			</a>
+			<div class="clearfix"></div>
+			<div class="three">
+				<ul>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+			<div class="tab">
+				<ul id="tab">
+					<li class="act">人气</li>
+					<li>最新</li>
+					<li>进度</li>
+					<li>总需</li>
+				</ul>
+				<div id="box">
+					<script type="text/html" id="list1">
+						<ul class="goods rem1">
+							{{each}}
+							<li>
+								<a href="goods/goods.html?aid={{$value.aid}}">
+									<img src="{{$value.thumb}}" alt="" />
+									<div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">({{$value.section}}期){{$value.name}}</div></a>
+								<div class="des">
+									<div>
+										<p>开奖进度{{$value.p | flo}}%</p>
+										<p>
+											<div class="progress" style="width: 90%; margin-left: 10%; background: #D3D3D3; height:auto ; margin-top: 5%; border-radius: 3px;">
+												<div class="progress-bar progress-bar-danger" id="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="background-color: red; width: {{$value.p | flo}}%;height: 5px;">
+												</div>
+											</div>
+										</p>
+									</div>
+									<div><a href="user/Flow.html?aid={{$value.aid}}&gid={{$value.gid}}"><button type="button" class="mui-btn mui-btn-danger" aid="{{$value.aid}}" gid="{{$value.gid}}">加入清单</button></a></div>
+								</div>
+							</li>
+							{{/each}}
+						</ul>
+					</script>
+					<!----------------------------------------------最新---------------------------------------------------------------->
+					<!------------------------------------------进度--------------------------------------->
+					<!---------------------------------------------------------总需-------------------------------------------->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<nav class="mui-bar mui-bar-tab" id="home_nav">
+				<a id="" class="mui-tab-item mui-active" href="javascrpt:;">
+					<div class="mui-icon mui-icon-home"></div>
+					<div class="mui-tab-label">1块夺宝</div>
+				</a>
+				<a id="" class="mui-tab-item" href="./goods/showlist.html">
+					<div class="mui-icon mui-icon-chatboxes"></div>
+					<div class="mui-tab-label">最新揭晓</div>
+				</a>
+				<a id="" class="mui-tab-item" href="./goods/list.html">
+					<div class="mui-icon mui-icon-camera"></div>
+					<div class="mui-tab-label">晒单</div>
+				</a>
+				<a id="" class="mui-tab-item" href="./user/user.html">
+					<div class="mui-icon mui-icon-contact"></div>
+					<div class="mui-tab-label">我的</div>
+				</a>
+			</nav>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			var end = 1,
+				p = 1,
+				cat = 1,
+				uidd,
+				newWin=new Object;			
+			$(function() {
+				var userinfo=localStorage.getItem('db330296385_woo_user');
+    			var userinfoJ=JSON.parse(userinfo); 
+    			if(userinfoJ){
+        			uidd=userinfoJ.uid;
+       			 }
+					$.getJSON('http://duobao.nntzd.com/?g=DuoBao', function(data) {
+							if (data) {
+								// 这里循环banner
+								var slider = new Array();
+								var num = data.banner.length;
+								var url;
+								for (var i = 0; i < num; i++) {
+									slider[i] = data.banner[i];
+									url=slider[i].type=='web'?slider[i].param:'javascript:;';
+									var str = '<div class="swiper-slide"><a href="'+url+'"><img src="' + slider[i].path + '" width="100%" /></a></div>';
+									$('.swiper-wrapper').append(str);
+									var mySwiper = new Swiper('.swiper-container', {
+										//添加需要的选项:
+										effect: 'slide',
+										direction: 'horizontal',
+										loop: true,
+										autoplay: 1000,
+										speed: 1000,
+										// 如果需要分页器
+										pagination: '.swiper-pagination'
+									})
+								}
+								//	这里是标题
+								$('.mui-title').html('一块夺宝');
+								//这里循环最新揭晓
+								
+								for (var i = 0; i <= 2; i++) {
+									newWin[i] = data.new[i]
+									var str = '<a href="goods/goods.html?aid='+newWin[i].aid+'"><li data-etime='+newWin[i].etime+'><img src="' + newWin[i].thumb + '" alt="" width="95%" /><div><div class="mui-ellipsis">第(' + newWin[i].section + ')期' + newWin[i].name + '</div><div class="green mui-ellipsis">中奖人:' + newWin[i].nickname + '</div></div></li></a>';
+									$('.three ul').append(str);								
+								}
+							
+//									//这里是倒计时
+								$('.three ul a').each(function(){
+									var nowtime = data.nowtime;
+									var etime=$(this).find('li').attr('data-etime');
+									var b=etime-nowtime;
+									b=b*60;
+									if(b>0){
+										var index=$(this).index();
+										setInterval(function(){
+											b--;
+											var a=timer(b);
+											$('.three ul a').eq(index).find('.green').html(a)
+											$('.three ul a').eq(index).find('.green').css('background','red')
+											$('.three ul a').eq(index).find('.green').css('color','#fff')
+										},1000/60);
+									}									
+								})								
+							}
+						})
+						//默认加载第一页
+					$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getRecom', {
+							'cat': 1,
+							p: p,
+							n: 10
+						}, function(recom) {
+							var htmllist = template('list1', recom);
+							$("#box").html(htmllist);
+						})
+						//这里循环各种推荐商品   		
+					$('#tab li').click(function() {
+						var index = $(this).index();
+						var cat = index + 1;
+						$('#tab li').removeClass('act')
+						$(this).addClass('act');
+						//				$('#box .goods').addClass('list');
+						$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getRecom', {
+							'cat': cat,
+							p: p,
+							n: 10
+						}, function(recom) {
+							var htmllist = template('list1', recom);
+							$("#box").html(htmllist);
+						})
+					})
+					//			监听滚动事件
+					$(window).scroll(function() {
+						var bot = 50; //bot是底部距离的高度
+						if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+							if (end == 1) {
+								p++;
+								$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getRecom', {
+									'cat': cat,
+									p: p,
+									n: 10
+								}, function(list2) {
+									if (list2) {
+										var htmllist2 = template('list1', list2);
+										$('#box').append(htmllist2);
+									} else {
+										end = 2;
+										$('#box').after('<div class="clearfix"></div><p style="margin-bottom:50px">没有更多数据了...</p>');
+									}
+								})
+							}
+						}
+					})
+				})
+	//		加入购物车
+			//跳转路径
+		</script>
+	</body>
+</html>

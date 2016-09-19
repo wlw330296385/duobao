@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no"/>
+    <title>修改用户信息</title>
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portrait.css" />
+    <script type="text/javascript" src="../js/woo.js" ></script>
+    <script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+   
+    
+<style>
+.por{
+	border: dashed  2px #737373;
+	width: 180px;
+	height: 180px;
+  border-radius: 55%;
+  background: url('C:\fakepath\111.jpg');
+}
+</style>
+</head>
+<body>
+<form action="http://duobao.nntzd.com/?g=Api&m=Upload&a=uploadPic" >
+	<div class="user">
+		<div class="left"><label for="portrait" style="line-height: 5;">头像</label></div>
+		<div class="right por">
+			<input type="file" name="upload" id="avatar" value="" onchange="getImg()" style="overflow: hidden; height: 180px; width: 100%;opacity: 0; "/>
+		</div>
+		<div class="left"><label for="nickname">昵称</label></div>
+		<div class="right"><input type="text" id="nickname" class="mui-input-clear"/></div>
+	</div>
+	
+
+	
+	<nav class="mui-bar mui-bar-tab" id="home_nav">
+			
+			<a href="javascript:;" onclick="sbm()" style="text-align:center">
+				<div class="mui-tab-label" style="background: red; height: 50px; line-height: 50px; font-size: 1.5em;color: #fff;">完成</div>
+			</a>
+		</nav>
+</form>
+</body>
+ <script type="text/javascript" charset="utf-8">
+        mui.init();
+          var userinfo=is_login();
+      var username=userinfo.username,encrypt=userinfo.encrypt,uid=userinfo.userid;
+      userinfo.nickname='woooo'; 
+
+        $(function(){
+          $('#nickname').val(userinfo.nickname)  
+          $('.por').css('background','url('+userinfo.userpic+') 100% no-repeat center');
+       
+
+      })          
+  
+     function getImg(){
+          var img=$('#avatar').val();    
+          $('.por').css('background','url('+img+') 100% no-repeat center');
+          // 这里上传到阿里云头像
+            $('.user input[type="file"]').ajaxfileupload({
+            'action': "",
+            // 'valid_extensions': ['txt', 'mp3'], 
+            'onComplete': function(response) {
+                console.log(response);
+                if (response.state == 'SUCCESS') {
+                    alert('上传成功');
+                } else {
+                    alert('不知道什么原因,上传失败了(*@ο@*)');
+                }
+            }
+        });
+     }    
+
+  function sbm(){
+    var nickname=$('#nickname').val();
+    var userpic=$('#avatar').val(); 
+    $.post('http://duobao.nntzd.com/?g=DuoBao&m=Member&a=editUser&uid='+uid+'&encrypt='+encrypt,{'nickname':nickname,'userpic':userpic},function(msg){
+      alert(msg)
+  })
+    $('form').submit();
+  }
+  
+
+  
+//  图片上传
+
+
+
+    </script>
+</html>

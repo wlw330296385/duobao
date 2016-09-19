@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<title>购物车</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/user/flow.css" />
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/woo.js" ></script>
+			<script type="text/javascript">
+			var num=1,aid,gid;
+//          计算总价
+			function total(){	
+				var num=0;
+				num=parseInt(num);
+				$('input[type="number"]').each(function(){
+					var m=$(this).val()
+					var chk=$(this).parent().next().html();					
+					if(chk){
+					m=parseInt(m)				
+					num=m+num;
+					}
+				})							
+				$('#count').html(num);
+				return num;
+			}
+	
+			$(function(){
+		//	验证登录
+		var userinfo=is_login();
+//			监听价格变动
+				$('input[type="number"]').blur(function(){
+					total();
+				})
+//			 包尾JQ
+				$('.mui-btn-danger').click(function(){
+					var bw=$(this).attr('bw');
+					var a=$(this).parent().siblings().find('input').val(bw)
+					total()
+				})
+				aid = GetQueryString('aid');
+				gid=GetQueryString('gid');
+//			获取商品数据	
+				aid=parseInt(aid);
+				$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=getactivity',{aid:aid},function(data){
+					if(data){
+						$('.img img').attr('src',data.thumb);
+						var last=data.money-data.nowmoney;
+						$('.bb').html('剩余'+last);
+						$('.aa').html('总需'+data.money);
+						$('.mui-btn-danger').attr('bw',last);
+						$('#gname').html(data.name);
+					}
+					
+				})				
+//				跳转到支付页面			
+				$('.mui-tab-label').click(function(){
+					num=total();
+					window.location.href='Pay.html?aid='+aid+'&money='+num+'&gid='+gid;
+				})
+			})
+		</script>
+		<style>
+		#home_nav{
+			position: fixed;
+			bottom: 0;
+		}
+			#home_nav div{
+				width:50%;
+				float: left;
+				text-align: center;
+				line-height: 3;
+			}
+			#home_nav strong{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="flow">
+			<div class="img">
+				<img width="100%" src="" />
+			</div>
+			<div class="right mui-ellipsis">
+				<div class="mui-ellipsis" style="width: 98%;"><strong id="gname"></strong></div>
+				<div style="width: 90%;">
+					<div class="aa mui-ellipsis" style="float: left; width: 50%;"></div>
+					<div style="color: red; float: right; width: 50%;" class="bb mui-ellipsis"></div>
+				</div>
+				<div class="num">
+					<div class="mui-numbox" data-numbox-min="1" data-numbox-max=''>
+						<button class="mui-btn mui-numbox-btn-minus" type="button" onclick="total()">-</button>
+						<input class="mui-numbox-input" type="number" value="1" />
+						<button class="mui-btn mui-numbox-btn-plus" type="button" onclick="total()">+</button>
+					</div>
+					<div style="width: 30%;">
+						<button class="mui-btn mui-btn-danger" style="" bw="321">包尾</button>
+					</div>
+					
+				</div>
+				<div class="btm">奖品最新一期火热进行中</div>
+			</div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab" id="home_nav" style="position: absolute;z-index: 3;">
+				<div class="mui-tab-label">共<b id="num">1</b>件商品,共<b id="count">1</b>元</div>
+				<div class="mui-tab-label" style="background: red; height: 50px; line-height: 50px; font-size: 1.5em;color: #fff;">提交订单</div>
+		</nav>
+	</body>
+
+</html>

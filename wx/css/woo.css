@@ -1,0 +1,118 @@
+
+.one{
+	width: 100%;
+
+}
+
+.two ul li{
+	position: relative;
+	float: left;
+	width: 20%;
+	margin:-1% 2%;
+	text-align: center;
+} 
+
+.two ul li span{
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	/*font-weight: bold;*/
+}
+.news{
+	margin-top: 8%;
+	padding: 0 5%;
+	border-bottom: 2px solid #E3E3E3;
+}
+.news div{
+	font-size: 1.3em;
+}
+.news span{
+	float: right;
+}
+
+.three ul li{
+	position: relative;
+	float: left;
+	width: 33%;
+	padding: 0 2%;
+	text-align: center;
+	border-left:2px solid #E3E3E3 ;
+	border-right:2px solid #E3E3E3 ;
+}
+
+.three ul li span{
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+
+}
+.three ul li span.green{
+	text-align: center;
+	background: green;
+	border-radius: 15px;
+	color: #fff;
+
+}
+
+.tab ul li{
+	width: 25%;
+	float: left;
+	text-align: center;
+	line-height: 2.5;
+	font-size: 1.4em !important;
+	cursor: pointer;
+}
+
+.act{
+	border-bottom: 3px red solid;
+	margin-bottom: -10px;
+	position: relative;
+	z-index: 2;
+}
+
+.goods{
+	margin-top:3px;
+	width: 100%;
+}
+.goods li{
+	line-height: 1.8 !important;
+	width:49% !important;
+	text-align: center;
+	border-left:1px solid #E3E3E3 ;
+	border-right:1px solid #E3E3E3 ;
+	padding-bottom: 4%;
+}
+
+.goods img{
+	width:88%
+}
+.goods li p{
+	padding: 0;
+	font-size: 0.8em;
+}
+.des{
+	text-align: center;
+	width: 100%;
+}
+.des div{
+	text-align: center;
+	width: 50%;
+	float: left;
+	height: 30px;
+}
+
+
+.mui-btn-danger{
+	padding: 5%;
+	margin-top: 10%;
+	
+}
+
+.list{
+	display:none;
+}
+.green{
+	background: green;
+	border-radius: 10px;
+	color: #fff;
+}

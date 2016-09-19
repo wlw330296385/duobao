@@ -1,0 +1,97 @@
+/* reset */
+*{box-sizing:border-box;box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
+body{background:#fff;}
+a,a:hover{color:#333;}
+html{}
+body{
+	font-family: Arial; 
+	-webkit-user-select:none; /* Chrome all / Safari all */
+-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;
+}
+
+#nav{display: -webkit-box;
+-webkit-box-orient: horizontal; position: fixed;bottom: 0;left: 0;width: 100%; border-top: 1px solid #ddd; background: #fff}
+#nav a{display: block;
+-webkit-box-flex: 1;
+width: 100%;
+line-height: 4rem;
+font-size: 16px;
+text-align: center;}
+#nav a.active{color: red}
+
+.btn_group{}
+	.btn_group ul{}
+	.btn_group ul li{ padding: 15px; border-bottom: 1px solid #ddd}
+	.btn_group ul li a{ display: block;  font-size: 14px }
+
+.box_p15{ padding: 15px}
+.line{ height: 10px; background: #f1f1f1 }
+small{ font-size: 12px; color: #999 }
+.cl{clear: both;}
+
+
+#info{ line-height: 28px ; font-size: 13px; color:#999}
+#name{ margin: 8px 0; color: #333 }
+#pressbox{width: 100%; height: 5px; background: #ddd}
+	#press{background: -webkit-gradient(linear,left top,right top,from(#FFCB3D),to(#FF8533)); height: 100%}
+
+.pstatus{margin-right: 5px;
+padding: 1px;
+text-align: center;
+border: 1px solid #da3652;
+border-radius: 2px;
+color: #da3652;}
+
+.btn_red{border-radius: 5px; display: block;background: #db3652; color: #fff;text-align: center; padding: 10px 0; font-size: 16px }
+#want_bottom{position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.5);}
+	#want_bottom a{  width: 80%;   margin: 15px auto; }
+
+
+	#order_list h3{ padding: 15px; font-weight: 400; font-size: 14px }
+
+
+
+#gotobuy{background: rgba(0,0,0,0.3); height: 100%; width: 100%; position:fixed; top: 0; left: 0; z-index: 2; display: none;}
+
+
+
+#buybox{ text-align: center; background: #f1f1f1;padding: 15px 0; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 3;display: none; }
+	#buybox .tit{ margin-bottom: 15px}
+
+#btn_order{ border-radius:0; width: 100%;}
+#fast_money{ padding: 20px 0 }
+#fast_money span{ background: #fff; color:#db3652; border:1px solid #db3652; padding: 5px; margin: 0 10px  }
+@-webkit-keyframes showorder {
+from {opacity: 0}
+to {opacity: 1}
+}
+.neworder{-webkit-animation:showorder 1s;}
+#olists li{ padding:8px 15px; border-bottom: 1px solid #ddd; }
+#olists li img{ border-radius: 5px ; width: 46px; height: 46px; margin-right: 10px}
+.oname{ color: #00c0ff }
+.nt1{ margin-bottom: 10px ;}
+.odeal{ color: #db3652 }
+.otime{float: right; color: #999}
+
+#about{ height: 40px; line-height: 40px; text-align: center; position: fixed;top: 0; left: 0; background: rgba(0,0,0,0.5); z-index: 99;  width: 100% }
+#about a{ color:#fff }
+#load_more{ line-height: 40px; text-align: center; }
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="format-detection" content="telephone=no"/>
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>1块夺宝</title>
+		<link rel="stylesheet" type="text/css" href="http://guizu.nntzd.com/application/Api/View/Game/css/swiper.css"/>
+		<style type="text/css">
+			html,body{
+				overflow-x: hidden;
+			}
+			body,ul,h3,h4,li{
+				margin: 0;
+				padding: 0;
+			}
+			#content{padding: 20px; line-height: 24px; font-size: 14px;}
+		    h3{margin: 0;padding: 0; margin: 10px 0;  font-size: 18px;}
+		</style>
+		
+	</head>
+	<body>
+		<section id="content">
+			
+			<div class="detail">
+				1块夺宝非常尊重用户个人信息的保护，在您使用1块夺宝服务时，我们将按照本隐私声明手机、使用、共享您的个人信息。<br/>
+				<br/>
+				<h3>一、未成年人的特别注意事项</h3>
+				如果您未满18周岁，您无权使用本APP服务，因此我们希望您不要向我们提供任何个人信息。如果您未满18周岁，您只能在父母或监护人的陪同下才可以使用本APP服务。<br/>
+				<br />
+				<h3>二、用户名和密码</h3>
+				当您在注册为APP用户时，您需要根据提示填写用户名和密码，并设置密码提示问题及其答案，以便在您丢失密码时用于您的身份确认。您只能通过您的密码来使用您的账户。如果您泄漏或了密码，您可能会丢失您的个人识别信息，并可能导致对您不利的司法行为。因此无论任何原因使您的密码安全受到威胁时，您应该立即通过KF@ygqq.com和我们取得联系。<br/>
+				<br/>
+				<h3>三、完善信息</h3>
+				在您注册成为APP用户后或参与购物并获得商品后，您需要在“我的”里完善您个人信息，根据要求填写您的真实姓名，地址，与电话，支付宝账号。我们使用注册信息来保护用户账户安全，在您在账户利益受到危害的情况下。同时我们使用注册信息来获得用户统计资料，以便为用户提供更多更新的服务。我们会通过短信通知您有关新的服务。<br/>
+				<br />
+				<h3>四、信息披露</h3>
+				我们不会向任何第三方提供，出售，出租，分享和交易用户的个人信息。当在以下情况下，用户的个人信息将部分或全部被善意披露<br/>
+				<h3>五、怎样查看是否中奖？</h3>
+				个人中心有您的夺宝记录，点击对应的记录，即可知道该期夺宝的获得者;<br/>
+				1、经用户同意，向第三方披露;<br/>
+				2、如用户是合资格的知识产权投诉人并已提起投诉，应被投诉人要求，向被投诉人披露，以便双方处理可能的权利纠纷;<br/>
+				3、根据法律的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露;<br/>
+				4、如果用户出现违反中国有关法律或者网站政策的情况，需要向第三方披露;<br/>
+				5、为提供您所要求的产品和服务，而必须和第三方分享用户的个人信息;<br/>
+				6、其它APP根据法律或者网站政策认为合适的披露。<br/>
+
+				<h3>六、安全</h3>
+				我们APP有相应的安全措施来确保我们掌握的信息不丢失，不被滥用和变造。这些安全措施包括向其它服务器备份数据和对用户密码加密。尽管我们有这些安全措施，但请注意在因特网上不存在“完善的安全措施”。<br/>
+				<br/>
+				<h3>七、查阅和修改个人信息</h3>
+				您使用1块夺宝服务时，您可以随时查阅并随时修改您的个人信息。提供查看IP地址仅仅只是为了安全的必要。 <br/>
+				<br/>
+				<h3>八、邮件/短信服务</h3>
+				注册成为1块夺宝用户后，您将会收到以短信的形式为您发送的最新活动与通知。为此，我们保留为用户发送最新活动与通知等告知服务的权利。当您注册成为1块夺宝用户后即表明您已同意接受此项服务。<br/>
+			</div>
+		</section>
+		
+		<script src="http://guizu.nntzd.com/application/Api/View/Game/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTab = document.getElementById("tab");
+				var slide = oTab.getElementsByClassName("swiper-slide");
+				var swiper = new Swiper('.swiper-container',{
+					scrollbar: '.swiper-scrollbar',
+					initialSlide :1,
+					onSlideChangeEnd: function(swiper){
+						for (var i = 0; i<slide.length;i++) {
+							slide[i].style.opacity=0.5;
+						}
+				        slide[swiper.activeIndex].style.opacity=1;
+				    }
+				});
+				
+			}
+		</script>
+		<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?ec3f8b1ba759ff941e42f4cdb8701b13";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+	</body>
+</html>

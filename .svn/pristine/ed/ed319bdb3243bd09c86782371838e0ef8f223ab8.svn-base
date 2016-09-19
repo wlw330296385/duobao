@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<title>夺宝记录</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="../css/mui.min.css">
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<script type="text/javascript" src="../js/template.js" ></script>
+<script type="text/javascript" src="../js/help.js" ></script>
+<script type="text/javascript" src="../js/woo.js" ></script>
+
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+	#list_Box { height: auto; overflow: hidden; }
+	#list_Box ul { }
+	#list_Box ul li {height:auto; overflow: hidden; background:#f6f6f6; margin-bottom: 5px; border-bottom: 1px dashed #e1e1e1;}
+	#list_Box .listLeft { float: left; width: 85%;}
+	.listLeft  img { float: left; margin:auto;}	
+	.listLeft  h5 { color: #060606;font-size: 1.1em;}
+	
+	.listLeft div { display: block;}
+	
+	.listLeft b { color: red;}
+	
+	#list_Box .listRight { float: right; width: 15%; margin-top: 25px;}
+
+			#user img{ height: 28px; width: 28px; margin-top: 6px;}
+			#home_nav{background: #f9f9f9;}
+			#home_nav a{color: #5f5756;}
+			
+			#home_nav div{color: #5f5756;}
+			
+			#home_nav .mui-active div{ color: #e74b3e;}
+			header{
+				position: relative;
+			}
+			p{
+				line-height:0.3;color: #fff;text-align: center;
+				width: 90%;opacity: 0.7;margin: auto;
+			}
+			.tb{
+				width: 100%;
+				text-align: left;
+				font-size:1.5em;
+				font-weight: bold;
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+
+<ul id="list_Box">
+</ul>
+	<script id="tpl_list" type="text/html">
+    {{each}}
+    
+    <li data-etime="{{$value.etime}}"><a href="../goods/goods.html?aid={{$value.aid}}">
+			<div class="listLeft" style="border: solid 1px #E3E3E3; width: 100%;">
+				<div style="width:30%; float: left;position: relative; margin:2% 0;">
+					<div><img src="{{$value.thumb}}" width="100%"/></div>
+					<div style="position: absolute;bottom:2%;width: 100%;">
+					{{if $value.status==1}}
+					<p style="background: darkgreen;">进行中</p>
+					{{else if $value.etime-$value.nowtime>0}}<p style="background: red;">正在揭晓</p>
+					{{else}}<p style="background: red;">已揭晓</p>
+					{{/if}}
+					</div>
+				</div>
+				<div style="width:65%; float: left;margin-left: 3%; margin:2% 0;">
+					<h5>(第{{$value.section}}期){{$value.name}}</h5>
+					<div>总需{{$value.money}}人/次</div>
+					<div>本期参与 ：<b style="color: red;">{{$value.deal}}人/次</b></div>
+					<div class="tb">
+					{{if $value.nickname}}
+					<div>获奖者 ：<b style="color: deepskyblue;">{{$value.nickname}}</b></div>
+					<div>中奖人本次参与 :<b style="color:red">{{$value.wdeal}}人/次</b></div>
+					{{else}}
+					<div>剩余 ：<b style="color: red;"> {{$value.money-$value.nowmoney}}</b></div>
+					{{/if}}
+					</div>
+				</div>
+			</div>
+    	</a>
+	</li>
+    
+    {{/each}}	
+	</script>
+		<nav class="mui-bar mui-bar-tab" id="home_nav">
+			<a id="defaultTab" class="mui-tab-item" href="../index.html">
+				<div class="mui-icon mui-icon-home"></div>
+				<div class="mui-tab-label">1块夺宝</div>
+			</a>
+			<a  id="quyueTab" class="mui-tab-item" href="../goods/showlist.html">
+				<div class="mui-icon mui-icon-chatboxes"></div>
+				<div class="mui-tab-label">最新揭晓</div>
+			</a>
+			<a id="rankTab" class="mui-tab-item" href="../goods/winninglist.html">
+				<div class="mui-icon mui-icon-camera"></div>
+				<div class="mui-tab-label">晒单</div>
+			</a>
+			<a id="myTab" class="mui-tab-item mui-active" href="user.html">
+				<div class="mui-icon mui-icon-contact"></div>
+				<div class="mui-tab-label">我的</div>
+			</a>
+		</nav>
+
+	</body>
+<script type="text/javascript">
+var p=1;
+var end=1;
+var uid = 1999;
+
+	function BindList(){
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&m=member&a=getorderslist',{uid:uid,p:1},function(data){
+			if(data){
+				var html = template('tpl_list',data);
+				$("#list_Box").html(html);
+				$('#list_Box li').each(function(){
+					var nowtime = data.nowtime;
+					var etime=$(this).attr('data-etime');
+					var b=etime-nowtime;
+					b=b*60;
+					if(b>0){
+						var ind=$('#list_Box li').index(this);
+						setInterval(function(){
+						b--;
+						var a=timer(b);
+						$('#list_Box li').eq(ind).find('.tb').html('<i>揭晓倒计时&nbsp:&nbsp&nbsp&nbsp</i>'+a);
+						},1000/60);
+					
+						}									
+					})	
+			}
+		})
+	}
+	
+	 
+	$(function(){
+		//页面加载结束
+		//验证登录
+		is_login();
+		// 获得URL上的aid参数
+
+		uid=GetQueryString('uid')	
+		//绑定模板		
+		BindList()					
+		// 开启上拉刷新
+		
+			$(window).scroll(function () {		        
+		        var bot = 50; //bot是底部距离的高度
+        		if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+		         if(end==1){  
+		         	p++;
+		            $.getJSON("http://duobao.nntzd.com/?g=DuoBao&m=member&a=getorderslist",{uid:uid,p:2},function (data) {
+		                if(data){		                   
+		                    var htmllist2= template('tpl_list',data);		                  
+		                    $('#list_Box').append(htmllist2);
+		                    $('#list_Box li').each(function(){
+							var nowtime = data.nowtime;
+							var etime=$(this).attr('data-etime');
+							var b=etime-nowtime;
+							b=b*60;
+							if(b>0){
+								var ind=$('#list_Box li').index(this);
+								setInterval(function(){
+								b--;
+								var a=timer(b);
+								$('#list_Box li').eq(ind).find('.tb').html('<i>揭晓倒计时&nbsp:&nbsp&nbsp&nbsp</i>'+a);
+								},1000/60);
+					
+						}									
+					})		                    
+		                }else{		                	
+		                	 $('#list_Box').after('<p style="margin-bottom:50px">没有更多数据了...</p>');
+		                	end=2;
+		                }
+		              })
+		        }	}	    
+		})
+		
+	})
+</script>
+</html>

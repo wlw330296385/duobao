@@ -1,0 +1,176 @@
+html {
+  overflow-x: hidden;
+}
+body,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+img {
+  display: block;
+}
+i {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+body {
+  background: #000000;
+  font-family: Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", sans-self;
+}
+header {
+  width: 100%;
+  height: 5.8rem;
+  background: url(../../images/user/my_bg.png) no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+header .head_img {
+  width: 3.6rem;
+  height: 3.6rem;
+  margin: 0.4rem auto 0 auto;
+  position: relative;
+}
+header .head_img img {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+}
+header .head_img .vip_tip {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  border-radius: 50%;
+  color: #fff;
+  background: #e04a32;
+  font-size: 0.4rem;
+  right: -0.5rem;
+  top: -0.2rem;
+  text-align: center;
+  line-height: 1rem;
+}
+header .user_name {
+  text-align: center;
+  color: #fff;
+  font-size: 0.5rem;
+  line-height: 1rem;
+}
+header .iCount {
+  color: #e04a32;
+  font-size: 0.375rem;
+  text-align: center;
+}
+.user_Box {
+  padding: 0.3rem 0.4rem;
+  background: #262626;
+  overflow: hidden;
+  margin: 0.2rem 0;
+}
+.user_Box h3 {
+  padding-bottom: 0.3rem;
+  font-size: 0.5rem;
+  color: #fff;
+  clear: both;
+}
+.user_Box img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.user_Box .user_photos {
+  width: 100%;
+}
+.user_Box .user_photos .iphotos {
+  clear: both;
+  overflow: hidden;
+}
+.user_Box .user_photos img {
+  float: left;
+  margin: 0.1rem;
+}
+.user_Box .user_photos span {
+  display: block;
+  float: left;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.6rem;
+  background: #000;
+  margin: 0.1rem;
+}
+.user_Box .user_gift {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0.3rem;
+}
+.user_Box .user_gift .igifts {
+  width: 100%;
+  clear: both;
+}
+.user_Box .user_gift .igifts div {
+  float: left;
+  margin: 0.1rem;
+  overflow: hidden;
+}
+.user_Box .user_gift .igifts p {
+  line-height: 0.8rem;
+  color: #999999;
+  text-align: center;
+  font-size: 0.32rem;
+}
+.hrefBox {
+  background: #262626;
+  width: 100%;
+  padding: 0.3rem;
+}
+.hrefBox .ihref {
+  width: 100%;
+  height: 1.4rem;
+  border-bottom: 1px solid #000;
+  clear: both;
+  line-height: 1.4rem;
+  overflow: hidden;
+}
+.hrefBox .ihref span {
+  font-size: 0.5rem;
+  margin: 0.45rem 0.3rem 0 0;
+}
+.hrefBox .ihref span:nth-of-type(1) {
+  float: left;
+  color: #e04a32;
+}
+.hrefBox .ihref span:nth-of-type(2) {
+  float: right;
+}
+.hrefBox .ihref p {
+  float: left;
+  color: #fff;
+  font-size: 0.4rem;
+}
+.hrefBox .ihref:nth-last-of-type(1) {
+  border: none;
+}
+.out {
+  margin: 0.3rem 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.4rem;
+  color: #fff;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  background: #262626;
+}

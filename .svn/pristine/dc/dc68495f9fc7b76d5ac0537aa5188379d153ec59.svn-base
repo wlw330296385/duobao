@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"> 
+		<title>最新揭晓</title>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/mui.min.css">
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jwweixxin-1.0.0.js" ></script>
+<script type="text/javascript" src="../js/template.js" ></script>
+<script type="text/javascript" src="../js/help.js" ></script>
+<script type="text/javascript" src="../js/woo.js" ></script>
+
+<style>
+	#list_Box li{border-bottom: 1px solid #d3d3d3;cursor: pointer;position: relative;}
+	#list_Box li div.l{float: left; width: 40%; text-align: center;}
+	#list_Box li div.r{float: right; width: 60%;}
+	.mui-active div{
+		color: #007aff;
+	}
+	.clearfix{clear: both;}
+	.l{
+		padding-top: 2%;
+		overflow: hidden;
+		position: relative;
+	}	
+	.tsf{
+		position: absolute;
+		background: red;
+		width: 90%;
+		top: 10%;
+		left: -20%;
+		line-height: 1.8;
+		text-align: center;
+		transform: rotate(-40deg);
+		color: #fff;
+		display: none;
+	}
+	.djs{
+		color: red;
+		font-weight: bold;
+		font-size: 2.2em;
+		text-align: center;
+		line-height: 3;
+	}
+	.r{
+		overflow: hidden;
+		padding-top:3%;
+	}
+</style>
+	</head>
+	<body>
+<ul id="list_Box"></ul>
+
+		<nav class="mui-bar mui-bar-tab" id="home_nav">
+			<a id="defaultTab" class="mui-tab-item" href="../index.html">
+				<div class="mui-icon mui-icon-home"></div>
+				<div class="mui-tab-label">1块夺宝</div>
+			</a>
+			<a  id="quyueTab" class="mui-tab-item mui-active" href="">
+				<div class="mui-icon mui-icon-chatboxes"></div>
+				<div class="mui-tab-label">最新揭晓</div>
+			</a>
+			<a id="rankTab" class="mui-tab-item" href="list.html">
+				<div class="mui-icon mui-icon-camera"></div>
+				<div class="mui-tab-label">晒单</div>
+			</a>
+			<a id="myTab" class="mui-tab-item" href="../user/user.html">
+				<div class="mui-icon mui-icon-contact"></div>
+				<div class="mui-tab-label">我的</div>
+			</a>
+		</nav>
+	</body>
+<script type="text/javascript">
+var p=1;
+var end=1;
+var gid=0;
+	function BindList(){
+		$.getJSON('http://duobao.nntzd.com/?g=DuoBao&a=newlist&gid='+gid,{p:p},function(data){
+			if(data){
+				var html = template('tpl_list',data);
+				$("#list_Box").html(html);
+//		 循环倒计时
+			$('span').each(function(){
+				
+				var nowtime=data[0].nowtime;
+				var etime=$(this).attr('data-etime');
+				var b= etime-nowtime;
+				b=b*60;
+				if (b >= 0) {
+					$(this).parent().parent().find('.tsf').show()
+					var ind=$('.r span').index(this);
+//					$('span').eq(ind).parent().find('.tsf').show();
+					setInterval(function() {
+						b--;
+						var a = timer(b)
+						$('span').eq(ind).html('<div class="djs">'+a+'</div>');
+						}, 1000 / 60);	
+					}				
+			})				
+//		结束循环
+			}
+		})
+	}		 
+	$(function(){
+		//页面加载结束
+		//绑定模板
+		 BindList();
+		 // 获取路径上的gid	
+		 gid=GetQueryString('gid');
+		 // 开启上拉刷新
+		 gid=gid==null?0:gid;
+		// 获得URL上的aid参数
+			$(window).scroll(function () {		        
+		        var bot = 50; //bot是底部距离的高度
+        		if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+		            
+		            if(end=1){
+		            	p++;
+		            $.getJSON("http://duobao.nntzd.com/?g=DuoBao&a=newlist&gid="+gid, {p:2}, function (data) {
+		                if(data){		                   		                   
+		                    var htmllist2= template('tpl_list',data);		                  
+		                    $('#list_Box').append(htmllist2);
+		                           //		 循环倒计时
+			$('span').each(function(){
+				var nowtime=data[0].nowtime;
+				var etime=$(this).attr('data-etime');
+				var b= etime-nowtime;
+				b=b*60;
+				if (b >= 0) {
+					var ind=$('.r span').index(this);
+					$(this).parent().parent().find('.tsf').show();
+					setInterval(function() {
+						b--;
+						var a = timer(b)
+						$('span').eq(ind).html('<div class="djs">'+a+'</div>');
+						}, 1000 / 60);	
+					}				
+				})  
+		                }else{
+		                	 $('#list_Box').after('<p>没有更多数据了...</p>');
+		                	end=2;
+		                }
+		              })
+		        }
+		   
+			}
+				})
+	})
+</script>
+<script id="tpl_list" type="text/html">
+{{each}}   
+ 	<li><a href="goods.html?aid={{$value.aid}}">
+			<div class="l">
+				<div class="tsf">正在揭晓 
+				<!--<svg version="1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="220,100 300,210 170,250"/>
+				</svg>-->
+				</div>
+				<img src="{{$value.thumb}}" width="90%" />
+			</div>
+			<div class="r">
+				<h5 class="mui-ellipsis" style="margin-top:5% ;">(第{{$value.section}}期){{$value.name}}</h5>
+				<div>总需：{{$value.money}}</div>
+				<span data-etime="{{$value.etime}}" data-nowtime="{{$value.nowtime}}">
+				<div style="color: #007aff;" class="mui-ellipsis">获奖者：{{$value.nickname}}</div>
+				<div style="color: red;">本期夺宝：<b style="color: red;">{{$value.deal}}次/人</b></div>
+				<div>揭晓时间：{{$value.etime | time}}</div>
+				</span>
+			</div>
+ 	</a>
+			<div class="clearfix"></div>
+	</li> 
+	
+{{/each}}	
+</script>
+</html>

@@ -1,0 +1,36 @@
+header{
+	background: #DD524D !important;
+}
+
+.contain{
+	margin-top: 8%;
+	padding: 2% 10%;
+}
+
+.one{
+	text-indent: 2%;
+}
+.one div{
+	float: left;
+}
+.two button{
+
+	width: 28%;
+	margin: 2% 2%;
+}
+.three{
+	width: 100%;
+	line-height: 2;
+	height: 50px;
+}
+.three div{
+	float: left;
+	margin: 2% 2%;
+}
+
+.three input{
+	width: 100%;
+	/*border-radius: 2px;*/
+	font-size: 0.5em;
+	line-height: 2;
+}

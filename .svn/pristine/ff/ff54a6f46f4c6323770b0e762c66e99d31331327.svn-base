@@ -1,0 +1,79 @@
+html {
+  overflow-x: hidden;
+}
+body,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+img {
+  display: block;
+}
+i {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+body {
+  background: #000000;
+  font-family: Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", sans-self;
+}
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.row,
+.col-xs-4 {
+  margin: 0;
+  padding: 0;
+}
+.wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+.giftList {
+  box-sizing: border-box;
+  padding: 0.5rem 0.2rem;
+  text-align: center;
+  font-size: 0.3rem;
+  border-bottom: 1px solid #8a8a8a;
+}
+.giftList .col-xs-4 {
+  border-right: 1px dashed #8a8a8a;
+}
+.giftList .col-xs-4:nth-last-of-type(1) {
+  border: none;
+}
+.giftList img {
+  width: 1.81rem;
+  height: 1.653rem;
+  display: inline-block;
+}
+.giftList .giftName {
+  color: #77777b;
+}
+.giftList .meili {
+  margin-top: 0.2rem;
+  color: #e04a32;
+}
+.giftList .yuebi {
+  color: yellow;
+}
+.wrap .giftList:nth-last-of-type(1) {
+  border: none;
+}
